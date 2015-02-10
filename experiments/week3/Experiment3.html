@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!-- CSS -->
+    <style>
+        .explodingBox {
+            height: 100px;
+            width: 100px;
+            background: #b9cd6d;
+            display:inline-block;
+            margin : 20px;
+        }
+    </style>
+    <script>
+         $(document).ready(function() {
+            $('#explodingBox1').click(function() {
+               $( "#explodingBox1" ).effect({
+                  effect: "explode",
+                  easing: "easeInExpo",
+                  pieces: 4,
+                  duration: 3000
+               });
+            });
+
+            $('#explodingBox2').click(function () {
+                $("#explodingBox2").effect("shake", {
+                    times: 10,
+                    distance: 100
+                }, 3000, function () {
+                    $(this).css("background", "#cccccc");
+                });
+            });
+
+            $('#explodingBox3').click(function () {
+                $( "#explodingBox3" ).hide( "blind", {times: 10, distance: 100}, 1000, callback );
+            });
+
+            function callback() {
+                setTimeout(function() {
+                    $( "#explodingBox3" ).removeAttr( "style" ).hide().fadeIn();
+                }, 1000 );
+            };
+         });
+    </script>
+</head>
+<body>
+    <fieldset>
+        <div id="explodingBox1" class="explodingBox">Click me</div>
+        <div id="explodingBox2" class="explodingBox">Click me</div>
+        <div id="explodingBox3" class="explodingBox">Click me</div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                effect() method applies an animation effect to the elements without having to show or hide it.
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <div>Exploding effect</div>
+        <pre>
+            $('#explodingBox1').click(function() {
+               $( "#explodingBox1" ).effect({
+                  effect: "explode",
+                  easing: "easeInExpo",
+                  pieces: 4,
+                  duration: 3000
+               });
+            });
+        </pre>
+        <div>Shake Effect</div>
+        <pre>
+            $('#explodingBox2').click(function () {
+                $("#explodingBox2").effect("shake", {
+                    times: 10,
+                    distance: 100
+                }, 3000, function () {
+                    $(this).css("background", "#cccccc");
+                });
+            });
+        </pre>
+        <div>Blind Effect</div>
+        <pre>
+            $('#explodingBox3').click(function () {
+                $( "#explodingBox3" ).hide( "blind", {times: 10, distance: 100}, 1000, callback );
+            });
+            function callback() {
+                setTimeout(function() {
+                    $( "#explodingBox3" ).removeAttr( "style" ).hide().fadeIn();
+                }, 1000 );
+            };
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week3/Experiment3.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>

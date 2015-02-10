@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <style>
+        #sortable {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 25%;
+            float: left;
+        }
+
+            #sortable li {
+                margin: 0 3px 3px 3px;
+                padding: 0.4em;
+                padding-left: 1.5em;
+                font-size: 17px;
+                height: 16px;
+            }
+
+        .default {
+            background: #cedc98;
+            border: 1px solid #DDDDDD;
+            color: #333333;
+        }
+    </style>
+    <script>
+        $(function () {
+            $('#sortable').sortable({
+                update: function (event, ui) {
+                    var productOrder = $(this).sortable('toArray').toString();
+                    $("#sortable-9").text(productOrder);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <fieldset>
+        <div>Drag rectangle to new position in the list!!</div>
+        <ul id="sortable">
+            <li id="1" class="default">Product 1</li>
+            <li id="2" class="default">Product 2</li>
+            <li id="3" class="default">Product 3</li>
+            <li id="4" class="default">Product 4</li>
+        </ul>
+        <br>
+        <h3><span id="sortable-9"></span></h3>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                jQueryUI provides sortable() method to reorder elements in list or grid using the mouse. This method performs sortability action based upon an operation string passed as the first parameter.
+                <br/>
+                The sortable () method can be used in two forms:
+                <ul>
+                    <li>$(selector, context).sortable (options) Method</li>
+
+                    <li>$(selector, context).sortable ("action", [params]) Method</li>
+                </ul>
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <div>This code converts the list in the HTMl to an sortable list by using Jquery-UI</div>
+        <pre>
+            $('#sortable').sortable({
+                update: function (event, ui) {
+                    var productOrder = $(this).sortable('toArray').toString();
+                    $("#sortable-9").text(productOrder);
+                }
+            });
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week3/Experiment2.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.tutorialspoint.com/jqueryui/jqueryui_sortable.htm" target="_blank">tutorialspoint.com</a>
+    </fieldset>
+</body>
+</html>

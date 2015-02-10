@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <style>
+        .wrap {
+            display: table-row-group;
+        }
+
+        #people, #animals {
+            width: 120px;
+            height: 70px;
+            padding: 0.5em;
+            float: left;
+            margin: 0px 5px 10px 0;
+        }
+
+        #city, #jungle {
+            width: 140px;
+            height: 100px;
+            padding: 0.5em;
+            float: left;
+            margin: 10px;
+        }
+    </style>
+    <script>
+    $(function () {
+        $("#people").draggable();
+        $("#animals").draggable();
+
+        $("#city").droppable({
+            accept: "#people",
+            drop: function (event, ui) {
+                $(this)
+                .addClass("ui-state-highlight")
+                .find("p")
+                .html("Success!");
+            }
+        });
+        $("#jungle").droppable({
+            accept: "#animals",
+            drop: function (event, ui) {
+                $(this)
+                .addClass("ui-state-highlight")
+                .find("p")
+                .html("Success!");
+            }
+        });
+    });
+    </script>
+
+</head>
+<body>
+    <fieldset>
+        <div class="wrap">
+            <div id="people" class="ui-widget-content">
+                <p>People to be dropped to city</p>
+            </div>
+
+            <div id="animals" class="ui-widget-content">
+                <p>Animals to be dropped to jungle</p>
+            </div>
+
+            <div id="city" class="ui-widget-header">
+                <p>city</p>
+            </div>
+
+            <div id="jungle" class="ui-widget-header">
+                <p>jungle</p>
+            </div>
+        </div>
+        
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            jQueryUI provides draggable() method to make any DOM element draggable. Once the element is draggable, you can move that element by clicking on it with the mouse and dragging it anywhere within the viewport.
+            <br/>
+            jQueryUI provides droppable() method to make any DOM element droppable at a specified target (a target for draggable elements).
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This code makes the elemnts draggable
+        <pre> 
+        $("#people").draggable();
+        $("#animals").draggable();
+        </pre>
+        <br/>
+        <br/>
+        This code makes the boxes city and jungle droppable
+        <pre>
+        $("#city").droppable({
+            accept: "#people",
+            drop: function (event, ui) {
+                $(this)
+                .addClass("ui-state-highlight")
+                .find("p")
+                .html("Success!");
+            }
+        });
+        $("#jungle").droppable({
+            accept: "#animals",
+            drop: function (event, ui) {
+                $(this)
+                .addClass("ui-state-highlight")
+                .find("p")
+                .html("Success!");
+            }
+        });
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week3/Experiment1.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.tutorialspoint.com/jqueryui/jqueryui_droppable.htm" target="_blank">tutorialspoint.com</a>
+    </fieldset>
+</body>
+</html>

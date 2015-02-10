@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+</head>
+<body>
+    <fieldset>
+        <p>Click the button to get your coordinates.</p>
+
+        <button onclick="getLocation()">Click me to get coordinates</button>
+
+        <p id="results"></p>
+
+        <script>
+            var x = document.getElementById("results");
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+            }
+        </script>
+
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                The HTML Geolocation API is used to get the geographical position of a user.
+
+                Since this can compromise user privacy, the position is not available unless the user approves it.
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <pre>navigator.geolocation.getCurrentPosition(showPosition);</pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week1/Experiment4.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,5 @@
+﻿Experiment1.html	Experiment 1 - jQueryUi - Drag and Drop
+Experiment2.html	Experiment 2 - jQueryUi - Sortable elements
+Experiment3.html	Experiment 3 - jQuery effect() method
+Experiment4.html	Experiment 4 - jQuery animate() method
+Experiment5.html	Experiment 5 - jQuery slideshow

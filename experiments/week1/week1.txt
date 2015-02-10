@@ -1,0 +1,5 @@
+﻿Experiment1.html	Experiment 1 - Form input and localstorage
+Experiment2.html	Experiment 2 - Drag and drop
+Experiment3.html	Experiment 3 - Audio and Video tags
+Experiment4.html	Experiment 4 - Geolocation
+Experiment5.html	Experiment 4 - Canvas

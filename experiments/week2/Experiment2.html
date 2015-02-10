@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        .divRotate
+        {
+            background: green;
+            width:100px;
+            height:100px;
+            color:white;
+            position:relative;
+            font-weight:bold;
+            font-size:15px;
+            padding:10px;
+            display:inline-block;
+            margin:20px;
+            margin-right:50px;
+            border:1px solid #888888;
+            border-radius:5px;
+            vertical-align: top;
+        }
+       
+    </style>
+    <script type="text/javascript">
+        var x, y,z, n = 0, ny = 0,nx = 0, rotINT, rotYINT, rotXINT
+        function rotateDIV() {
+            x = document.getElementById("rotate1")
+            clearInterval(rotINT)
+            rotINT = setInterval("startRotate()", 10)
+        }
+        function rotateYDIV() {
+            y = document.getElementById("rotatey1")
+            clearInterval(rotYINT)
+            rotYINT = setInterval("startYRotate()", 10)
+        }
+        function rotateXDIV() {
+            z = document.getElementById("rotatex1")
+            clearInterval(rotXINT)
+            rotXINT = setInterval("startXRotate()", 10)
+        }
+        function startRotate() {
+            n = n + 1
+            x.style.transform = "rotate(" + n + "deg)"
+            x.style.webkitTransform = "rotate(" + n + "deg)"
+            x.style.OTransform = "rotate(" + n + "deg)"
+            x.style.MozTransform = "rotate(" + n + "deg)"
+            if (n == 180 || n == 360) {
+                clearInterval(rotINT)
+                if (n == 360) { n = 0 }
+            }
+        }
+        function startXRotate() {
+            nx = nx + 1
+            z.style.transform = "rotateX(" + nx + "deg)"
+            z.style.webkitTransform = "rotateX(" + nx + "deg)"
+            z.style.OTransform = "rotateX(" + nx + "deg)"
+            z.style.MozTransform = "rotateX(" + nx + "deg)"
+            if (nx == 180 || nx >= 360) {
+                clearInterval(rotXINT)
+                if (nx >= 360) { nx = 0 }
+            }
+        }
+        function startYRotate() {
+            ny = ny + 1
+            y.style.transform = "rotateY(" + ny + "deg)"
+            y.style.webkitTransform = "rotateY(" + ny + "deg)"
+            y.style.OTransform = "rotateY(" + ny + "deg)"
+            y.style.MozTransform = "rotateY(" + ny + "deg)"
+            if (ny == 180 || ny >= 360) {
+                clearInterval(rotYINT)
+                if (ny >= 360) { ny = 0 }
+            }
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <div onclick="rotateDIV()" id="rotate1" class="divRotate">2D rotate</div>
+        <div onclick="rotateYDIV()" id="rotatey1" class="divRotate">3D rotate around Y</div>
+        <div onclick="rotateXDIV()" id="rotatex1" class="divRotate">3D rotate around X</div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                Various 2D and 3D transforms are possible with CSS 3. Rotation is demonstration here
+                <ul>
+                    <li>2D rotation can be done with rotate() function</li>
+                    <li>3D rotation can be done with either rotateX(), rotateY() or rotateZ() methods</li>
+                </ul>
+                The examples show 2D and 3D rotation around X and Y axis only.
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <pre>x.style.transform = "rotate(" + n + "deg)"</pre>
+        <pre>y.style.transform = "rotateY(" + ny + "deg)"</pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week1/Experiment2.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>

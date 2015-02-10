@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        .divRotate {
+            background: green;
+            width: 100px;
+            height: 100px;
+            color: white;
+            position: relative;
+            font-weight: bold;
+            font-size: 15px;
+            padding: 10px;
+            display: inline-block;
+            margin: 20px;
+            border: 1px solid #888888;
+            border-radius: 5px;
+            vertical-align: top;
+            transition: 2s ease-in-out;
+        }
+
+        .divRotate:hover {
+            background: red;
+            width: 100px;
+            height: 100px;
+            color: white;
+            position: relative;
+            font-weight: bold;
+            font-size: 15px;
+            padding: 10px;
+            display: inline-block;
+            margin: 20px;
+            margin-left: 700px;
+            border: 1px solid #888888;
+            border-radius: 5px;
+            vertical-align: top;
+            transform: scale(1.5) rotate(360deg);
+        }
+    </style>
+
+</head>
+<body>
+    <fieldset>
+        <div class="divRotate">Hover over me</div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            CSS3 transitions are effects that let an element gradually change from one style to another.
+
+            To do this, you must specify two things:
+            <ul>
+                <li>the CSS property you want to add an effect to</li>
+                <li>the duration of the effect</li>
+            </ul>
+            The transition effect will start when the specified CSS property changes value. A typical CSS property change would be when a user mouse-over an element:
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <pre>transition: 2s ease-in-out;</pre>
+        <pre>transform: scale(1.5) rotate(360deg);</pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week2/Experiment3.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>

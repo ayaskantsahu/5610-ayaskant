@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function drawShape() {
+            // get the canvas element using the DOM
+            var canvas = document.getElementById('mycanvas');
+
+            // Make sure we don't execute when canvas isn't supported
+            if (canvas.getContext) {
+
+                // use getContext to use the canvas for drawing
+                var ctx = canvas.getContext('2d');
+
+                // Draw shapes
+                ctx.beginPath();
+                ctx.arc(75, 75, 50, 0, Math.PI * 2, true);  // Outer circle
+                ctx.moveTo(110, 75);
+                ctx.arc(75, 75, 35, 0, Math.PI, false);   // Mouth
+                ctx.moveTo(65, 65);
+                ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
+                ctx.moveTo(95, 65);
+                ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
+                ctx.stroke();
+
+            } else {
+                alert('You need Safari or Firefox 1.5+ to see this demo.');
+            }
+        }
+    </script>
+</head>
+<body onload="drawShape();">
+    <fieldset>
+        <canvas id="mycanvas"></canvas>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                HTML5 element &lt;canvas&gt; gives you an easy and powerful way to draw graphics using JavaScript. It can be used to draw graphs, make photo compositions or do simple (and not so simple) animations.
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <pre>
+            var ctx = canvas.getContext('2d');
+            ctx.beginPath();
+            ctx.arc(75, 75, 50, 0, Math.PI * 2, true);
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week1/Experiment5.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.tutorialspoint.com/html5/html5_canvas.htm" target="_blank">Tutorialspoint</a>
+    </fieldset>
+</body>
+</html>

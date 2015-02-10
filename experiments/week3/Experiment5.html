@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <style>
+        #slideshow {
+    margin: 2em auto;
+    width: 70%;
+    max-width: 40em;
+    overflow: hidden;
+}
+
+#slideshow-wrapper {
+    width: 1600em;
+    height: 15em;
+    position: relative;
+}
+
+div.slide {
+    width: 40em;
+    height: 15em;
+    float: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#s1 {
+    background-image: url(http://www.jssor.com/img/landscape/01.jpg);
+    background-size:100% 100%;
+}
+
+#s2 {
+    background-image: url(http://www.jssor.com/img/landscape/02.jpg);
+    background-size:100% 100%;
+}
+
+#s3 {
+    background-image: url(http://www.jssor.com/img/landscape/03.jpg);
+    background-size:100% 100%;
+}
+
+#s4 {
+    background-image: url(http://www.jssor.com/img/landscape/04.jpg);
+    background-size:100% 100%;
+}
+
+#slideshow-nav {
+    margin: 1em 0;
+    text-align: center;
+}
+
+#slideshow-nav a {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5;
+    border: 1px solid silver;
+    color: #333;
+    text-decoration: none;
+    margin-right: 0.5em;
+}
+
+#slideshow-nav a.active {
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+    </style>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.4.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var Slideshow = {
+
+                navigate: function () {
+                    $('a', '#slideshow-nav').click(function (e) {
+                        e.preventDefault();
+                        var $a = $(this);
+                        var slide = $($a.attr('href'));
+                        var wrapper = $('#slideshow-wrapper');
+
+                        wrapper.animate({
+                            left: -slide.position().left
+                        }, 1000, 'linear', function () {
+                            $a.addClass('active').siblings().removeClass('active');
+                        });
+
+                    });
+                },
+
+                init: function () {
+                    this.navigate();
+                }
+
+            };
+
+
+            Slideshow.init();
+        });
+    </script>
+
+</head>
+<body>
+    <fieldset>
+        <div id="slideshow">
+            <div id="slideshow-wrapper">
+                <div class="slide" id="s1"></div>
+                <div class="slide" id="s2"></div>
+                <div class="slide" id="s3"></div>
+                <div class="slide" id="s4"></div>
+            </div>
+            <div id="slideshow-nav">
+                <a href="#s1" class="active">1</a>
+                <a href="#s2">2</a>
+                <a href="#s3">3</a>
+                <a href="#s4">4</a>
+            </div>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                Slideshow are used as UX components on many homepages these days. They provide a very attractive and userfriendly way of
+                browsing all the features of a website as pictures or as collection of latest news.
+
+                This slider was built using raw jQuery without any plugin.
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <div>This javascript code snippet enables the slideshow without any jquery-ui plugin.</div>
+        <pre>
+          $(document).ready(function () {
+            var Slideshow = {
+                navigate: function () {
+                    $('a', '#slideshow-nav').click(function (e) {
+                        e.preventDefault();
+                        var $a = $(this);
+                        var slide = $($a.attr('href'));
+                        var wrapper = $('#slideshow-wrapper');
+                        wrapper.animate({
+                            left: -slide.position().left
+                        }, 1000, 'linear', function () {
+                            $a.addClass('active').siblings().removeClass('active');
+                        });
+                    });
+                },
+                init: function () {
+                    this.navigate();
+                }
+            };
+            Slideshow.init();
+        });
+        </pre>
+        <div>This CSS class puts in the image and makes it strectch according to background.</div>
+        <pre>
+        #s1 {
+            background-image: url(http://www.jssor.com/img/landscape/01.jpg);
+            background-size:100% 100%;
+        }
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week3/Experiment5.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://gabrieleromanato.name/javascript-slideshows-an-introduction/" target="_blank">gabrieleromanato.name/</a>
+    </fieldset>
+</body>
+</html>

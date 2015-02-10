@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script type="text/javascript">
+        function save(event)
+        {
+            var name = document.getElementById("name").value;
+            var dob = document.getElementById("dob").value;
+            var email = document.getElementById("email").value;
+            var country = document.getElementById("country").value;
+            var salary = document.getElementById("salary").value;
+            if (typeof (Storage) !== "undefined") {
+                localStorage[name] = JSON.stringify({
+                    dob: dob,
+                    email: email,
+                    country: country,
+                    salary: salary
+                });
+            } else {
+                alert("Local storage not suppoerted");
+            }
+            event.target.checkValidity();
+            event.preventDefault(); // Prevent form submission and contact with server
+            event.stopPropagation();
+            print();
+        }
+
+        function print()
+        {
+            document.getElementById("result").tBodies[0].innreHTML = "";
+            for (var i = 0, len = localStorage.length; i < len; ++i) {
+                var tr = document.createElement("tr");
+                var td1 = document.createElement("td");
+
+                td1.innerHTML = localStorage.key(i);
+                var stringJson = localStorage.getItem(localStorage.key(i));
+                var jsonRep = JSON.parse(stringJson);
+                var td2 = document.createElement("td");
+                td2.innerHTML = jsonRep.dob;
+
+                var td3 = document.createElement("td");
+                td3.innerHTML = jsonRep.email;
+
+                var td4 = document.createElement("td");
+                td4.innerHTML = jsonRep.country;
+
+                var td5 = document.createElement("td");
+                td5.innerHTML = jsonRep.salary;
+
+
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+                tr.appendChild(td5);
+                document.getElementById("result").tBodies[0].appendChild(tr);
+                console.log(localStorage.getItem(localStorage.key(i)));
+            }
+        }
+
+        function deleteData()
+        {
+            localStorage.clear();
+            document.getElementById("result").tBodies[0].innerHTML = "";
+        }
+
+    </script>
+</head>
+<body>
+    <fieldset>
+        <form id="personform" onsubmit="save(event)">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td><input id="name" type="text" name="name" /></td>
+                </tr>
+                <tr>
+                    <td>DOB</td>
+                    <td><input id="dob" type="date" name="dob" /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input id="email" type="email" name="email" /></td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>
+                        <input id="country" list="countrylist" />
+                        <datalist id="countrylist">
+                            <option value="United States of America">
+                            <option value="India">
+                            <option value="China">
+                            <option value="Canada">
+                            <option value="Australia">
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Salary</td>
+                    <td><input type="range" name="salary" id="salary" value="0" min="0" max="100000"></td>
+                    <td>(0 - 100000)</td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                    <td><button type="reset">Clear</button></td>
+                    <td><button type="button" onclick="deleteData()">Delete All Data</button></td>
+                </tr>
+            </table>
+        </form>
+        <br />
+        <table id="result" cellspacing="20">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Email</th>
+                    <th>Country</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            This demonstration consists of 5 different experiments combined togehter to provide something meaningful. Name must be unique for a new entry to be added. If an existing anem is used, the older data will be overridden. The experiments are as listed below : <br />
+            <ul>
+                <li><b>Datepicker : </b>This HTML 5 input control allows us to choose the date from a picker without any external plugin. A calendar is shown for choosing the date.</li>
+                <li><b>Email Input : </b>HTML 5 provides a easy way of validating emails. The email input shows error message by default of input is invalid.</li>
+                <li><b>Datalist : </b>HTML 5 provides a combobox which can act as autosuggest or select dropdown based on user needs.</li>
+                <li><b>Range Input : </b>A slider can beused to pick the range of salary in this case. It is rendered natively by HTML without any plugins.</li>
+                <li><b>Local Storage : </b>Web based storage can be used for caching data on browser. In this case all entered data is saved into Local storage and displayed. The store can be wiped out too. Thus write, read and delete operations have been implemented.</li>
+            </ul>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week1/Experiment1.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>

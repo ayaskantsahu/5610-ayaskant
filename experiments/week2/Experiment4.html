@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        @media 
+	only screen and (max-width: 760px),
+	(min-device-width: 768px) and (max-device-width: 1024px)  {
+	
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr { 
+			display: block;
+            padding:5px; 
+		}
+		
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr { 
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+		
+		tr { border: 1px solid #000; }
+
+        tr:nth-of-type(odd) {
+            background: #eee;
+        }
+
+        td, th {
+            padding: 6px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+		
+		td { 
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee; 
+			position: relative;
+			padding-left: 50%; 
+		}
+		
+		td:before { 
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 6px;
+			left: 6px;
+			width: 45%; 
+			padding-right: 10px; 
+			white-space: nowrap;
+		}
+		
+		/*
+		Label the data
+		*/
+		td:nth-of-type(1):before { content: "First Name"; }
+		td:nth-of-type(2):before { content: "Last Name"; }
+		td:nth-of-type(3):before { content: "Job Title"; }
+		td:nth-of-type(4):before { content: "Favorite Color"; }
+		td:nth-of-type(7):before { content: "Date of Birth"; }
+		td:nth-of-type(9):before { content: "GPA"; }
+
+	}
+	
+	/* Smartphones (portrait and landscape) ----------- */
+	@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 480px) {
+		body { 
+			padding: 0; 
+			margin: 0; 
+			width: 320px; }
+		}
+	
+    </style>
+</head>
+<body>
+    <fieldset>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Job Title</th>
+                    <th>Favorite Color</th>
+                    <th>Date of Birth</th>
+                    <th>GPA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>James</td>
+                    <td>Matman</td>
+                    <td>Chief Sandwich Eater</td>
+                    <td>Lettuce Green</td>
+                    <td>January 13, 1979</td>
+                    <td>3.1</td>
+                </tr>
+                <tr>
+                    <td>The</td>
+                    <td>Tick</td>
+                    <td>Crimefighter Sorta</td>
+                    <td>Blue</td>
+                    <td>July 19, 1968</td>
+                    <td>N/A</td>
+                </tr>
+                <tr>
+                    <td>Jokey</td>
+                    <td>Smurf</td>
+                    <td>Giving Exploding Presents</td>
+                    <td>Smurflow</td>
+                    <td>June 21, 1949</td>
+                    <td>4.0</td>
+                </tr>
+                <tr>
+                    <td>Cindy</td>
+                    <td>Beyler</td>
+                    <td>Sales Representative</td>
+                    <td>Red</td>
+                    <td>July 5, 1956</td>
+                    <td>3.4</td>
+                </tr>
+                <tr>
+                    <td>Captain</td>
+                    <td>Cool</td>
+                    <td>Tree Crusher</td>
+                    <td>Blue</td>
+                    <td>December 13, 1982</td>
+                    <td>1.9</td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                The table has been made responsive by using media queries. These help us set us breakpoints at specific measurements in pixels based on which specific CSS class would be applied.
+                We have used two breakpoints. One for normal screen and another for smaller screens.
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <pre>@media only screen and (min-device-width : 320px) and (max-device-width : 480px) { ... }</pre>
+        <pre>@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) { ... }</pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week2/Experiment4.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="https://css-tricks.com/examples/ResponsiveTables/responsive.php" target="_blank">CssTricks</a>
+    </fieldset>
+</body>
+</html>

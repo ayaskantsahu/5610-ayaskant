@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+
+        #childBox {
+            background-color: #6233FF;
+            width: 75px;
+            height: 75px;
+            margin:10px;
+        }
+
+        #parentBox {
+            background-color: #F16699;
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+        }
+    </style>
+    <script type="text/javascript">
+        function dragStart(ev) {
+            ev.dataTransfer.effectAllowed = 'move';
+            ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
+            ev.dataTransfer.setDragImage(ev.target, 0, 0);
+            return true;
+        }
+        function dragEnter(ev) {
+            event.preventDefault();
+            return true;
+        }
+        function dragOver(ev) {
+            return false;
+        }
+        function dragDrop(ev) {
+            var src = ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(src));
+            ev.stopPropagation();
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <div id="childBox" draggable="true" ondragstart="return dragStart(event)">
+            <p>Drag Me</p>
+        </div>
+        <div id="parentBox" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event)"
+             ondragover="return dragOver(event)">Container</div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                From HTML5 it is possible to drag and drop HTML elements inside an HTML page. Via JavaScript event listeners you can decide what happens when the user drags and drops elements.
+                During drag and drop HTML elements can take on two roles:
+                <ul>
+                    <li>Draggable</li>
+                    <li>Drop target / drop zone.</li>
+                </ul>
+                The draggable element is the element which the user should be able to drag around the HTML page and drop somewhere, for some action to occur. This can be one or more elements.
+                The drop target or drop zone is the element onto which the draggable elements are dropped.
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <pre>&lt;div id="childBox" draggable="true" ondragstart="return dragStart(event)"&gt;Drag Me&lt;/div&gt;</pre>
+        <pre>&lt;div id="parentBox" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event)" ondragover="return dragOver(event)" &gt;container&lt;/div&gt;</pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week1/Experiment2.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>
