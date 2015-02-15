@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
+    <script>
+        var app = angular.module("AddressApp", []);
+
+        app.controller("AddressController", function ($scope, $http) {
+            $scope.searchAddress = function () {
+                var location = $scope.location;
+                mapsUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&sensor=false";
+                $http.get(mapsUrl)
+                    .success(function (response) {
+                        console.log(response);
+                        $scope.address = response.results;
+                    });
+                }
+        });
+    </script>
+</head>
+<body ng-app="AddressApp">
+    <fieldset>
+            <div ng-controller="AddressController" class="container">
+                <h1>Address Search</h1>
+
+                <h2>Enter search term</h2>
+                <div class="input-group col-md-6">
+                    <input type="text" ng-model="location" class="form-control" placeholder="Search for Address...">
+                    <span class="input-group-btn">
+                        <button ng-click="searchAddress()" class="btn btn-default" type="button">Go!</button>
+                    </span>
+                </div><!-- /input-group -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Address</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="add in address">
+                            <td style="width:100pt">{{add.formatted_address}}</td>
+                            <td>{{add.geometry.location.lat}}</td>
+                            <td>{{add.geometry.location.lng}}</td>
+                            <td>
+                                <img class="poster" ng-src="{{actor.urlPhoto}}" width="50" />
+                                {{actor.bio}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                This experiment demonstrates the power of angular $http service and demonstrated how it can be used to make a CORS get request to fetch JSON data.
+                In this case I am calling google maps API to search for addresses with the given term. The result is returned as a JSON and data binding is used to render the results
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <div>This is the main logic behind the get request and as soon as we get the response,we bind it into a scope parameter named address.</div>
+        <pre>
+        mapsUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location + "&sensor=false";
+        $http.get(mapsUrl)
+            .success(function (response) {
+                 console.log(response);
+                 $scope.address = response.results;
+            });
+        }
+        </pre>
+        
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week4/Experiment3.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>

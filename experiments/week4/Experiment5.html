@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+    <script type="text/javascript" src="http://www.flocations.com/static/vendor/angular-ui/event/event.js"></script>
+    <script type="text/javascript" src="http://www.flocations.com/static/vendor/angular-ui/map/ui-map.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&.js"></script>
+
+
+</head>
+<body class="container">
+    <fieldset>
+        <div ng-app='maptesting'>
+            <div ng-controller="MapCtrl">
+                <div id="map_canvas" ui-map="myMap"
+                     style="height:300px;width:400px;border:2px solid #777777;margin:3px; border:1px solid"
+                     ui-options="mapOptions"
+                     ui-event="{'map-idle' : 'onMapIdle()'}">
+                </div>
+
+                
+                <div ng-repeat="marker in myMarkers" ui-map-marker="myMarkers[$index]"
+                     ui-event="{'map-click': 'markerClicked(marker)'}">
+                </div>
+            </div>
+        </div>
+
+
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                Angular Google Maps is a set of directives (part of angular-ui) written in CoffeeScript and Javascript which integrate Google Maps in an AngularJS applications. This is a good demosntration of how to load external angular modules and use them along with angularJS
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <div>As you can notice, the the results of google maps api calls are stored into the $scope within the controller and thus used in a very angularJS way.</div>
+        <pre>
+        var ll = new google.maps.LatLng(13.0810, 80.2740);
+        $scope.mapOptions = {
+            center: ll,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        //Markers should be added after map is loaded
+        $scope.onMapIdle = function () {
+            if ($scope.myMarkers === undefined) {
+                var marker = new google.maps.Marker({
+                    map: $scope.myMap,
+                    position: ll
+                });
+                $scope.myMarkers = [marker, ];
+            }
+        };
+        </pre>
+        
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week4/Experiment5.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://gabrieleromanato.name/javascript-slideshows-an-introduction/" target="_blank">gabrieleromanato.name/</a>
+    </fieldset>
+    <script>
+    //Add the requried module 'angular-ui' as a dependency
+    angular.module('maptesting', ['ui.map', 'ui.event']);
+
+    function MapCtrl($scope) {
+        var ll = new google.maps.LatLng(13.0810, 80.2740);
+        $scope.mapOptions = {
+            center: ll,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        //Markers should be added after map is loaded
+        $scope.onMapIdle = function () {
+            if ($scope.myMarkers === undefined) {
+                var marker = new google.maps.Marker({
+                    map: $scope.myMap,
+                    position: ll
+                });
+                $scope.myMarkers = [marker, ];
+            }
+        };
+
+        $scope.markerClicked = function (m) {
+            window.alert("clicked");
+        };
+
+    }
+    </script>
+
+</body>
+</html>

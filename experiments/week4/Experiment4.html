@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.2/angular.min.js"></script>
+
+</head>
+<body class="container">
+    <fieldset style="height:300px">
+        <form ng-app="" ng-controller="validateCtrl"
+              name="myForm" novalidate>
+
+            <p>
+                Please choose username:<br>
+                <input class="form-control" type="text" name="user" ng-model="user" required>
+                <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+                    <span ng-show="myForm.user.$error.required">Username is mandatory.</span>
+                </span>
+            </p>
+
+            <p>
+                Email:<br>
+                <input class="form-control" type="email" name="email" ng-model="email" required>
+                <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+                    <span ng-show="myForm.email.$error.required">Email is required.</span>
+                    <span ng-show="myForm.email.$error.email">Invalid email address.</span>
+                </span>
+            </p>
+
+            <p>
+                <input class="btn btn-default" type="submit" ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.email.$dirty && myForm.email.$invalid">
+            </p>
+
+        </form>
+
+        <script>
+            function validateCtrl($scope) {
+                $scope.user = 'Ayaskant';
+                $scope.email = 'ayaskant@ccs.neu.edu';
+            }
+        </script>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                AngularJS forms and controls can provide validation services, and notify users of invalid input. In this case The AngularJS directive ng-model binds the input elements to the model. The model object has two properties: user and email. Because of ng-show, the spans with color:red are displayed only when user or email is $dirty and $invalid.
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This directive decides to show the error container only when the input is invalid.
+        <pre> 
+        ng-show="myForm.email.$dirty && myForm.email.$invalid"
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week4/Experiment4.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>

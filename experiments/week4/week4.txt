@@ -1,0 +1,5 @@
+﻿Experiment1.html	Experiment 1 - Data binding with angularJS
+Experiment2.html	Experiment 2 - Search using AngularJS filters
+Experiment3.html	Experiment 3 - Search using $http and JSON response.
+Experiment4.html	Experiment 4 - AngularJS form field validations example.
+Experiment5.html	Experiment 5 - AngularjS-UI google maps
