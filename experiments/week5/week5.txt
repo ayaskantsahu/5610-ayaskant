@@ -1,0 +1,4 @@
+﻿Experiment1.html	Experiment 1 - AngularJS - Routing
+Experiment2.html	Experiment 2 - AngularJS - basic services and dependency injection (Login)
+Experiment3.html	Experiment 3 - AngularJS - persistent session using $cookieStore
+Experiment4.html	Experiment 4 - AngularJS - Loading partial with new controllers and data sharing.

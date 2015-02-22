@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style5.css"> <!-- custom styles -->
+    <!-- JS -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-route.min.js"></script>
+
+    <!-- ANGULAR CUSTOM -->
+    <script src="js/app2.js"></script>
+</head>
+<body ng-app="RestCentralApp" ng-controller="parentController" class="container">
+    <fieldset>
+        <div>
+            <a href="#" ng-click="logOut()" class="btn btn-danger" style="margin-left: 93.2%;" ng-show="loggedIn">Log Out</a>
+            <!-- HEADER -->
+            <nav class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Rest Central</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#/addApp">Add Application</a></li>
+                    <li><a href="#/login">Login</a></li>
+                </ul>
+            </nav>
+
+            <!-- ANGULAR DYNAMIC CONTENT -->
+            <div ng-view></div>
+
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            In Angular a service is a function or an object and is used to share data and/or behavior across controllers, directives, filters, other services etc. A service is treated as a singleton, that is there is only one instance of a specific service available during the whole lifetime of the Angular application. This is different from e.g. a controller of which many instances can be created.
+
+            In this case, logging in using the credentials "user" and "password" maintains a session for the user and shows the log out button
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This line creates the service in the scope of the application.
+        <pre> 
+        angular.module('RestCentralApp').service("RestCentralService", function ($http, $q) {}
+        </pre>
+        <br />
+        <br />
+        This line injects the serviec into the desired controller for usage
+        <pre>
+        app.controller('parentController', function ($scope, RestCentralService, $window)
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week5/Experiment2.html" target="_blank">html</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week5/js/app2.js" target="_blank">js</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>

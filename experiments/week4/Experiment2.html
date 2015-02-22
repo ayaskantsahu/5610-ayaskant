@@ -84,47 +84,36 @@
     <fieldset>
         <h3>About the experiment</h3>
         <div>
-            Data-binding in Angular apps is the automatic synchronization of data between the model and view components. The way that Angular implements data-binding lets you treat the model as the single-source-of-truth in your application. The view is a projection of the model at all times. When the model changes, the view reflects the change, and vice versa. Angular templates work differently. First the template (which is the uncompiled HTML along with any additional markup or directives) is compiled on the browser. The compilation step produces a live view. Any changes to the view are immediately reflected in the model, and any changes in the model are propagated to the view. The model is the single-source-of-truth for the application state, greatly simplifying the programming model for the developer. You can think of the view as simply an instant projection of your model.
+            Filters can be added to expressions and directives using a pipe character. In this case instead of using the default filters, I have created a custom filter which will search the JSON array for a specific term and return the sentences which has it.
         </div>
     </fieldset>
     <br />
     <br />
     <fieldset>
         <h3>Code Snippets</h3>
-        This attribute in an input tag binds its value to gamer.firstName inside $scope.
+        This code basically calls the filter 'searchFor' with the model searchString value.
         <pre> 
-        ng-model="gamer.firstName"
+        &lt;li ng-repeat="i in items | searchFor:searchString"&gt;
         </pre>
         <br />
         <br />
-        This chunk of code is responsible for iterating over an array names games in $scope and printing values of each object inside it.
+        This chunk of code is the actual implementation of the filter. It contains all the logic required to perform matching.
         <pre>
-        <tr ng-repeat="gamer in gamers">
-        <td>{{ gamer.firstName }}</td>
-        <td>{{ gamer.lastName }}</td>
-        <td>{{ gamer.favouriteGame }}</td>
-          </tr>
-        </pre>
-        <br />
-        <br />
-        This chunk of code is the controller which decribes all logic in javascript. this automatically binds itself to the component based on its name.
-        <pre>
-        function gamerController($scope) {
-            $scope.gamers = [];
-            $scope.gamers.push({
-                firstName: "Ayaskant",
-                lastName: "Sahu",
-                favouriteGame: "DOTA 2"
-            });
-            $scope.addGamer = function(){
-                $scope.gamers.push({
-                    firstName: $scope.gamer.firstName,
-                    lastName: $scope.gamer.lastName,
-                    favouriteGame: $scope.gamer.favouriteGame
+        app.filter('searchFor', function () {
+            return function (arr, searchString) {
+                if (!searchString) {
+                    return arr;
+                }
+                var result = [];
+                searchString = searchString.toLowerCase();
+                angular.forEach(arr, function (item) {
+                    if (item.title.toLowerCase().indexOf(searchString) !== -1) {
+                        result.push(item);
+                    }
                 });
-                $scope.gamer = {};
-            }
-        }
+                return result;
+            };
+        });
         </pre>
     </fieldset>
     <br />

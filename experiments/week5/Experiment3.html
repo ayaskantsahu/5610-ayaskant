@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style5.css"> <!-- custom styles -->
+    <!-- JS -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-route.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-cookies.js"></script>
+
+    <!-- ANGULAR CUSTOM -->
+    <script src="js/app3.js"></script>
+</head>
+<body ng-app="RestCentralApp" ng-controller="parentController" class="container">
+    <fieldset>
+        <div>
+            <a href="#" ng-click="logOut()" class="btn btn-danger" style="margin-left: 93.2%;" ng-show="loggedIn">Log Out</a>
+            <!-- HEADER -->
+            <nav class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Rest Central</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#/addApp">Add Application</a></li>
+                    <li><a href="#/login">Login</a></li>
+                </ul>
+            </nav>
+
+            <!-- ANGULAR DYNAMIC CONTENT -->
+            <div ng-view></div>
+
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+           As an improvement over the normal way of storing user session, $cookieStorage was used. In general the normal js session is wiped out when the broweser is refreshed, but <b>cookie storage ensures persistent session storage in this case.</b>
+           $cookieStrorage Provides a key-value (string-object) storage, that is backed by session cookies. Objects put or retrieved from this storage are automatically serialized or deserialized by angular's toJson/fromJson.
+            <br/>
+            In this case, logging in using the credentials "user" and "password" maintains a session for the user and shows the log out button
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This line includes the cookies dependency into the module
+        <pre> 
+        angular.module('RestCentralApp', ['ngRoute', 'ngCookies']);
+        </pre>
+        <br />
+        <br />
+        These lines show how the user session is stored into cookies and fetched from cookies to ensure consistency even on page refresh.
+        <pre>
+        $cookieStore.put('loggedIn', true);
+        $cookieStore.get('loggedIn');
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week5/Experiment3.html" target="_blank">html</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week5/js/app3.js" target="_blank">js</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>

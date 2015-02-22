@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style5.css"> <!-- custom styles -->
+    <!-- JS -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-route.min.js"></script>
+
+    <!-- ANGULAR CUSTOM -->
+    <script src="js/app1.js"></script>
+</head>
+<body ng-app="RestCentralApp" ng-controller="parentController" class="container">
+    <fieldset>
+        <div>
+            <!-- HEADER -->
+            <nav class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Rest Central</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#/addApp">Add Application</a></li>
+                    <li><a href="#/login">Login</a></li>
+                </ul>
+            </nav>
+
+            <!-- ANGULAR DYNAMIC CONTENT -->
+            <div ng-view></div>
+
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            The magic of Routing is taken care by a service provider that Angular provides out of the box called $routeProvider. An Angular service is a singleton object created by a service factory. These service factories are functions which, in turn, are created by a service provider. The service providers are constructor functions. When instantiated they must contain a property called $get, which holds the service factory function.
+
+            When we use AngularJS’s dependency injection and inject a service object in our Controller, Angular uses $injector to find corresponding service injector. Once it get a hold on service injector, it uses $get method of it to get an instance of service object. Sometime the service provider needs certain info in order to instantiate service object.
+
+            In this case, clicking on the links loads the partian wab pages by making internal ajax calls.
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This line gets the app and injects the route service into it. Thus it can be used to define all the routes for the application.
+        <pre> 
+        angular.module('RestCentralApp').config(['$routeProvider', function($routeProvider)
+        </pre>
+        <br />
+        <br />
+        This chunk of code is responsible for routing all requests with addApp to the path provided. Thus it loads the partial internally.
+        <pre>
+        $routeProvider.when('/addApp', {
+		    templateUrl: 'views/AddApp.html'
+		})
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week5/Experiment1.html" target="_blank">html</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week5/js/app1.js" target="_blank">js</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>
