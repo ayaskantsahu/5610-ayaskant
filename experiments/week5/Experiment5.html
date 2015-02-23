@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style5.css"> <!-- custom styles -->
+    <!-- JS -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+
+
+</head>
+<body class="container">
+    <fieldset>
+        <h2>AngularJS Custom Directive</h2>
+        <div ng-app="mainApp" ng-controller="StudentController">
+            <student name="Ayaskant"></student><br />
+            <student name="Piyush"></student>
+        </div>
+        <script>
+            var mainApp = angular.module("mainApp", []);
+
+            mainApp.directive('student', function () {
+                var directive = {};
+                directive.restrict = 'E';
+                directive.template = "Student: <b>{{student.name}}</b> , Roll No: <b>{{student.rollno}}</b>";
+
+                directive.scope = {
+                    student: "=name"
+                }
+
+                directive.compile = function (element, attributes) {
+                    element.css("border", "1px solid #cccccc");
+
+                    var linkFunction = function ($scope, element, attributes) {
+                        element.html("Student: <b>" + $scope.student.name + "</b> , Roll No: <b>" + $scope.student.rollno + "</b><br/>");
+                        element.css("background-color", "#ff00ff");
+                    }
+
+                    return linkFunction;
+                }
+
+                return directive;
+            });
+
+            mainApp.controller('StudentController', function ($scope) {
+                $scope.Ayaskant = {};
+                $scope.Ayaskant.name = "Ayaskant Sahu";
+                $scope.Ayaskant.rollno = 1;
+
+                $scope.Piyush = {};
+                $scope.Piyush.name = "Piyush Shah";
+                $scope.Piyush.rollno = 2;
+            });
+
+        </script>
+
+
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+                AngularJS directives are what controls the rendering of the HTML inside an AngularJS application. Examples of directives are the interpolation directive ( {{ }} ), the ng-repeat directive and ng-if directive.
+
+                It is possible to implement your own directives too. This is what AngularJS refers to as "teaching HTML new tricks". This text will show you how to do that.
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <div>In this case we have created a new directive 'name' and this will search the controller for the scope data anf print all detains of the student mentioned.</div>
+        <pre>
+        &lt;student name="Ayaskant"&gt;&lt;/student&gt;
+        </pre>
+        <br/>
+        <br/>
+        <div>These lines of code inside the controller are containers for the data required for the directive to work</div>
+        <pre>
+        $scope.Ayaskant = {};
+        $scope.Ayaskant.name = "Ayaskant Sahu";
+        $scope.Ayaskant.rollno = 1;
+        </pre>
+        <br />
+        <br />
+        <div>The following code is where we define the new custom directive and mention all of its properties.</div>
+        <pre>
+            mainApp.directive('student', function () {
+                var directive = {};
+                directive.restrict = 'E';
+                directive.template = "Student: &lt;b&gt;{{student.name}}&lt;/b&gt; , Roll No: &lt;b&gt;{{student.rollno}}&lt;/b&gt;";
+                directive.scope = {
+                    student: "=name"
+                }
+                directive.compile = function (element, attributes) {
+                    element.css("border", "1px solid #cccccc");
+                    var linkFunction = function ($scope, element, attributes) {
+                        element.html("Student: &lt;b>" + $scope.student.name + "&lt;/b&gt; , Roll No: &lt;b&gt;" + $scope.student.rollno + "&lt;/b&gt;&lt;br /&gt;");
+                        element.css("background-color", "#ff00ff");
+                    }
+                    return linkFunction;
+                }
+                return directive;
+            });
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week5/Experiment5.html" target="_blank">View Source</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://tutorials.jenkov.com/" target="_blank">tutorials.jenkov.com</a>
+    </fieldset>
+    <script>
+    //Add the requried module 'angular-ui' as a dependency
+    angular.module('maptesting', ['ui.map', 'ui.event']);
+
+    function MapCtrl($scope) {
+        var ll = new google.maps.LatLng(13.0810, 80.2740);
+        $scope.mapOptions = {
+            center: ll,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        //Markers should be added after map is loaded
+        $scope.onMapIdle = function () {
+            if ($scope.myMarkers === undefined) {
+                var marker = new google.maps.Marker({
+                    map: $scope.myMap,
+                    position: ll
+                });
+                $scope.myMarkers = [marker, ];
+            }
+        };
+
+        $scope.markerClicked = function (m) {
+            window.alert("clicked");
+        };
+
+    }
+    </script>
+
+</body>
+</html>
