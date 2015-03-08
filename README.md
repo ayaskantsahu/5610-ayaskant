@@ -6,6 +6,37 @@ Ayaskant's Blog
 
 <span id="BlogContent"><div class="item_head">
 <span class="item_head_span">
+<span class="item_date_span">Sunday, March 08, 2015</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="item_time_span">6:53:48 AM</span>
+</span>
+</div>
+<div class="item_body">
+<h3>Node.JS experiments</h3>
+
+<p>
+    NodeJS is a very powerful javascript based server. Its asynchronous I/O allows it to be much more scalable with much less hardware compared to other servers based on other languages.
+</p>
+
+<ol>
+    <li>
+        NodeJS setup and test
+    </li>
+    <li>
+        NodeJS JSON request and response
+    </li>
+    <li>
+        NodeJS routing
+    </li>
+    <li>
+        NodeJS acreate application and view application object
+    </li>
+    <li>
+        Server side templating with Jade
+    </li>
+</ol></div>
+<div class="item_head">
+<span class="item_head_span">
 <span class="item_date_span">Sunday, February 22, 2015</span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <span class="item_time_span">6:36:33 AM</span>
