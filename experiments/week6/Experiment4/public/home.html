@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style5.css"> <!-- custom styles -->
+    <!-- JS -->
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+
+        var applications = [];
+        function showAddApp()
+        {
+            $.ajax({
+                url: "addAppPage",
+                success: function (result) {
+                    $("#view").html(result);
+                }
+            });
+        }
+
+        function saveApp(app)
+        {
+            $.ajax({
+                url: "saveApp",
+                type: "POST",
+                data: app,
+                success: function (result) {
+                    
+                }
+            });
+        }
+
+        function showViewApp() {
+            var deferred = $.Deferred();
+            var call2 = $.ajax({
+                url: "viewAppPage",
+                success: function (result) {
+                    $("#view").html(result);
+
+                }
+            });
+
+            var call1 = $.ajax({
+                url: "getApps"
+            });
+
+            $.when(call1, call2)
+                 .done(function (response1, response2) {
+                     $("#view").html(response2[0]);
+                     var apps = response1[0];
+                     for (app in apps)
+                     {
+                         var content = '<div class="dataLabel">Application Name:</div><div class="data">' + apps[app].name + '</div><br /><div class="dataLabel">URL:</div> <div class="data">' + apps[app].url + '</div><br /><div class="dataLabel">Request type:</div> <div class="data">' + apps[app].type + '</div><br /><br /><br />'
+                         $("#viewAppContainer").append(content);
+                     }
+                     
+                     
+                 });
+        }
+
+        function showLogin() {
+            $.ajax({
+                url: "loginPage",
+                success: function (result) {
+                    $("#view").html(result);
+                }
+            });
+        }
+
+
+        function saveApplication() {
+            var application = {};
+            application.name = $("#appName").val();
+            application.url = $("#url").val();
+            application.type = $("#reqType").val();
+            saveApp(application);
+        }
+
+    </script>
+</head>
+<body class="container">
+    <h3>Click on add application to add and view application to view the added applications.</h3>
+    <fieldset>
+        <div>
+            <!-- HEADER -->
+            <nav class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Rest Central</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="javascript:showAddApp()">Add Application</a></li>
+                    <li><a href="javascript:showLogin()">Login</a></li>
+                    <li><a href="javascript:showViewApp()">View Applications</a></li>
+                </ul>
+            </nav>
+
+            <!-- ANGULAR DYNAMIC CONTENT -->
+            <div id="view"></div>
+
+        </div>
+    </fieldset>
+</body>
+</html>

@@ -3,3 +3,4 @@ week2/week2.html?week2.txt	Week 2 - CSS and Bootstrap
 week3/week3.html?week3.txt	Week 3 - Jquery
 week4/week4.html?week4.txt	Week 4 - AngularJS
 week5/week5.html?week5.txt	Week 5 - AngularJS - Routing, Services
+week6/week6.html?week6.txt	Week 6 - NodeJS

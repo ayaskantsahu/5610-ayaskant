@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+
+    <!-- ANGULAR CUSTOM -->
+    <script src="js/app3.js"></script>
+</head>
+<body ng-app="RestCentralApp" ng-controller="parentController" class="container">
+    <fieldset>
+        <div>
+            <h3>NodeJS server side routing</h3>
+            <a href="http://myapp-ayaskant.rhcloud.com/">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+           Sometimes routing is preferred to be done serverside instead of client side. NodeJS allows easy routing by creation of paths with methods associated with it.
+         
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        These lines of code configure various routes based on the methods on the server.
+        <pre> 
+        app.get("/applications", function (req, res) {
+            res.json(applications);
+        })
+        app.get("/addAppPage", function (req, res) {
+            res.sendfile('./public/views/AddApp.html');
+        })
+        app.get("/loginPage", function (req, res) {
+            res.sendfile('./public/views/login.html');
+        })
+        </pre>
+        <br />
+        <br />
+        These lines render the partial html onto the UI
+        <pre>
+        function showAddApp()
+        {
+            $.ajax({
+                url: "addAppPage",
+                success: function (result) {
+                    $("#view").html(result);
+                }
+            });
+        }
+        function showLogin() {
+            $.ajax({
+                url: "loginPage",
+                success: function (result) {
+                    $("#view").html(result);
+                }
+            });
+        }
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week6/Experiment3/public/home.html" target="_blank">html</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week6/Experiment3/server.js" target="_blank">server.js</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>

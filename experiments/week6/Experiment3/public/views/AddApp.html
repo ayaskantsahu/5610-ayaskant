@@ -1,0 +1,29 @@
+<form class="form-horizontal" style="width: 75%;">
+    <div class="form-group">
+        <label for="appName" class="control-label col-xs-4">Application Name</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="appName" placeholder="Application Name" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="url" class="control-label col-xs-4">URL</label>
+        <div class="col-xs-8">
+            <input type="url" class="form-control" id="url" placeholder="URL" >
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="reqType" class="control-label col-xs-4">Request Type</label>
+        <div class="col-xs-8">
+            <select class="form-control" id="reqType">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-offset-4 col-xs-8">
+            <button class="btn btn-primary" type="reset" onclick="reset()">RESET</button>
+            <button class="btn btn-primary" type="button" onclick="saveApplication()">SAVE</button>
+        </div>
+    </div>
+</form>

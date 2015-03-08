@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    
+
+   
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>NodeJS accept json and respond with json</h3>
+            <a href="http://myapp-ayaskant.rhcloud.com/">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            This is an extension of the previous week's experiment where new applications can be added and viewed as json. This time this addition and retrieval is done from ther NodeJS server.
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This snippet allows adding new application to new list and then returning the new list of applications
+        <pre> 
+        app.post("/saveApp", function (req, res) {
+            var obj = req.body;
+            applications.push(obj);
+            res.json(applications);
+        });
+        app.get("/getApps", function (req, res) {
+            res.json(applications);
+        });
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week6/Experiment4/public/home.html" target="_blank">html</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week6/Experiment4/server.js" target="_blank">server.js</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">W3 Schools</a>
+    </fieldset>
+</body>
+</html>

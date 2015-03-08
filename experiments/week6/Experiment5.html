@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+   
+
+
+</head>
+<body class="container">
+    <fieldset>
+        <h3>Server side templating using Jade</h3>
+        <a href="http://myapp-ayaskant.rhcloud.com/exp5">Link to experiement</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+               Every enterprise application might need server side templating as they may not want too much data to hand around on the client side. This can also affect the responsiveness of the UI as well.
+                Jade is one such templating engine available on Node.js.
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <div>These lines in server.js allow configuration of Jade and rendering of a jade file with data.</div>
+        <pre>
+        app.set('views', __dirname);
+        app.set('view engine', 'jade');
+
+        app.post("/welcome", function (req, res) {
+            var obj = req.body;
+            console.log(obj);
+            res.render('hello', { user : obj.user});
+        });
+        </pre>
+        <br/>
+        <br/>
+        <div>This is the Jade template which we use to display the entered name.</div>
+        <pre>
+        doctype html
+            html(lang="en")
+              head
+                title= pageTitle
+                script(type='text/javascript').
+                  if (foo) {
+                     bar(1 + 5)
+                  }
+              body
+                h1 Jade - node template engine
+                #container.col
+                  p welcome #{user}
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week6/Experiment5/public/exp5.html" target="_blank">html</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week6/Experiment5/server.js" target="_blank">server.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week6/Experiment5/hello.jade" target="_blank">hello.jade</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://jade-lang.com/" target="_blank">jade-lang.com</a>
+    </fieldset>
+
+</body>
+</html>

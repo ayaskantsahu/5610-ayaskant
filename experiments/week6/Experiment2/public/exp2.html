@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        function getData() {
+            $.ajax({
+                url: "applications",
+                success: function (result) {
+                    for (elem in result)
+                    {
+                        $(document.body).append("<div>name : " + result[elem].name + "; url : " + result[elem].url + "; type : " + result[elem].type + "</div>");
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h3>Click on the button to get a response from the server.</h3>
+    <button onclick="getData()">Click me!!!</button>
+</body>
+</html>
