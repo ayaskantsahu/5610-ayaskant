@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+
+
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Read data from MongoDB</h3>
+            <a href="http://mymongo-ayaskant.rhcloud.com/exp1">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            This is a demonstration of basic read operation from MongoDB using mongoose.
+            MongoDB (from humongous) is a cross-platform document-oriented database. Classified as a NoSQL database, MongoDB eschews the traditional table-based relational database structure in favor of JSON-like documents with dynamic schemas (MongoDB calls the format BSON), making the integration of data in certain types of applications easier and faster. Released under a combination of the GNU Affero General Public License and the Apache License, MongoDB is free and open-source software.
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        These lines are used to setup the schema for Mongoose. The schema is used as a model to transfer data between nodejs and mongoDB in JSON format.
+        <pre> 
+        var UserSchema = new mongoose.Schema({
+            firstName: String,
+            lastName: String,
+            email: String,
+            username: String
+        });
+        var User = mongoose.model("User", UserSchema);
+
+        </pre>
+        <br />
+        <br />
+        The above created model is used to invoke the find method which reads data from MongoDB.
+        <pre> 
+        app.get('/users', function (req, res) {
+            User.find(function (err, data) {
+                console.log("Data =" + data);
+                res.json(data);
+            });
+        });
+
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week7/Experiment1/server.js" target="_blank">server.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week7/Experiment1/public/exp1.html" target="_blank">html</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://mongoosejs.com/docs/" target="_blank">mongoosejs.com</a>
+    </fieldset>
+</body>
+</html>

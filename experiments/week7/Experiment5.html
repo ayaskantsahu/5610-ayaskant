@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+   
+
+
+</head>
+<body class="container">
+    <fieldset>
+        <h3>Mongoose update in MongoDB</h3>
+        <a href="http://mymongo-ayaskant.rhcloud.com/exp5">Link to experiement</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <span>
+               Search feature can be easily implemented using mongoose and mongoDB as it internally allows usage of regular expressions in its APIs for pattern matching.
+            </span>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        <div>This snippet allows searching users based on partial username</div>
+        <pre>
+        app.get('/search/:term', function (req, res) {
+            var input = req.params.term;
+            User.find({ username: new RegExp(input, "i") }, function (err, data) {
+                res.json(data);
+            });
+        });
+        </pre>
+        
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week7/Experiment5/server.js" target="_blank">server.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week7/Experiment5/public/exp5.html" target="_blank">html</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://mongoosejs.com/docs/" target="_blank">mongoosejs.com</a>
+    </fieldset>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+</head>
+<body ng-app="RestCentralApp" ng-controller="parentController" class="container">
+    <fieldset>
+        <h3>Mongoose Add and view data</h3>
+        <a href="http://mymongo-ayaskant.rhcloud.com/exp2">Link to experiement</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            Creating a new user will list it in the table of all users on the page. A default user is available before the first run.
+            Mongoose makes saving and fetching of data very easy like any other ORM out there. The APIs are simple and the attached and persistent states are also maintained.
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This block of code fetches all users available from MongoDB and return the data in form of JSON in the response.
+        <pre> 
+        app.get('/users', function (req, res) {
+            User.find(function (err, data) {
+                console.log("Data =" + data);
+                res.json(data);
+            });
+        });
+        </pre>
+
+        <br />
+        <br />
+        This block of code accepts the request using a post method and then uses mongoose to create a new model class which is peristed into MongoDB
+        <pre>
+        app.post('/saveuser', function (req, res) {
+            var user = new User(req.body);
+            user.save(function (err, data) {
+                User.find(function (err, data) {
+                res.json(data);
+                });
+            });
+        });
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week7/Experiment2/server.js" target="_blank">server.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week7/Experiment2/public/exp2.html" target="_blank">html</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://mongoosejs.com/docs/" target="_blank">mongoosejs.com</a>
+    </fieldset>
+</body>
+</html>

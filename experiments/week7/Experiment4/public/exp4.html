@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        var users = {};
+        var currentEdit;
+        function getData() {
+            $.ajax({
+                url: "courses",
+                success: function (result) {
+                    $("#users tbody").html("");
+                    users = {};
+                    for (elem in result) {
+                        users[result[elem]._id] = result[elem];
+                        $("#users tbody").append('<tr><td>' + result[elem].firstName + '</td><td>' + result[elem].lastName + '</td><td>' + result[elem].email + '</td><td>' + result[elem].username + '</td><td><button type="button" onclick="deleteUser(\'' + result[elem]._id + '\')" class="btn red">Delete</button></td><td><button type="button" onclick="editUser(\'' + result[elem]._id + '\')" class="btn red">Edit</button></td></tr>')
+                    }
+                }
+            });
+        }
+
+        function saveData() {
+            var usr = {
+                firstName: $("#firstName").val(),
+                lastName: $("#lastName").val(),
+                email: $("#email").val(),
+                username: $("#username").val()
+            }
+            $.ajax({
+                url: "saveuser",
+                type: "POST",
+                data: usr,
+                success: function (result) {
+                    $("#users tbody").html("");
+                    users = {};
+                    for (elem in result) {
+                        users[result[elem]._id] = result[elem];
+                        $("#users tbody").append('<tr><td>' + result[elem].firstName + '</td><td>' + result[elem].lastName + '</td><td>' + result[elem].email + '</td><td>' + result[elem].username + '</td><td><button type="button" onclick="deleteUser(\'' + result[elem]._id + '\')" class="btn red">Delete</button></td><td><button type="button" onclick="editUser(\'' + result[elem]._id + '\')" class="btn red">Edit</button></td></tr>')
+                    }
+                }
+            });
+        }
+
+        function editUser(id){
+            var usr = users[id];
+            currentEdit = id;
+            $("#editForm").show();
+            $("#firstNameEdit").val(usr.firstName);
+            $("#lastNameEdit").val(usr.lastName);
+            $("#emailEdit").val(usr.email);
+            $("#usernameEdit").val(usr.username);
+        };
+
+        function updateData() {
+            var usr = {
+                firstName: $("#firstNameEdit").val(),
+                lastName: $("#lastNameEdit").val(),
+                email: $("#emailEdit").val(),
+                username: $("#usernameEdit").val()
+            }
+            $.ajax({
+                url: "edituser/" + currentEdit,
+                type: "PUT",
+                data: usr,
+                success: function (result) {
+                    $("#users tbody").html("");
+                    users = {};
+                    for (elem in result) {
+                        users[result[elem]._id] = result[elem];
+                        $("#users tbody").append('<tr><td>' + result[elem].firstName + '</td><td>' + result[elem].lastName + '</td><td>' + result[elem].email + '</td><td>' + result[elem].username + '</td><td><button type="button" onclick="deleteUser(\'' + result[elem]._id + '\')" class="btn red">Delete</button></td><td><button type="button" onclick="editUser(\'' + result[elem]._id + '\')" class="btn red">Edit</button></td></tr>')
+                    }
+                }
+            });
+        }
+
+        function deleteUser(id) {
+            $.ajax({
+                url: "deleteuser/" + id,
+                type: "DELETE",
+                success: function (result) {
+                    $("#users tbody").html("");
+                    for (elem in result) {
+                        $("#users tbody").append('<tr><td>' + result[elem].firstName + '</td><td>' + result[elem].lastName + '</td><td>' + result[elem].email + '</td><td>' + result[elem].username + '</td><td><button type="button" onclick="deleteUser(\'' + result[elem]._id + '\')" class="btn red">Delete</button></td><td><button type="button" onclick="editUser(\'' + result[elem]._id + '\')" class="btn red">Edit</button></td></tr>')
+                    }
+                }
+            });
+        }
+
+    </script>
+</head>
+<body class="container">
+    <h3>Click on the button to get a response from the server.</h3>
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <label for="email">First Name:</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Last Name:</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Username:</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter username">
+        </div>
+        <button type="button" onclick="saveData()" class="btn btn-default">Submit</button>
+    </form>
+    <br />
+    <br />
+    <form class="form-inline" id="editForm" role="form" style="display:none">
+        <div class="form-group">
+            <label for="email">First Name:</label>
+            <input type="text" class="form-control" id="firstNameEdit" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Last Name:</label>
+            <input type="text" class="form-control" id="lastNameEdit" placeholder="Enter last name">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Email:</label>
+            <input type="email" class="form-control" id="emailEdit" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Username:</label>
+            <input type="text" class="form-control" id="usernameEdit" placeholder="Enter username">
+        </div>
+        <button type="button" onclick="updateData()" class="btn btn-default">Submit</button>
+    </form>
+    <br />
+    <br />
+    <table id="users" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

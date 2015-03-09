@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        function getData() {
+            $.ajax({
+                url: "courses",
+                success: function (result) {
+                    $("#users tbody").html("");
+                    for (elem in result)
+                    {
+                        $("#users tbody").append('<tr><td>' + result[elem].firstName + '</td><td>' + result[elem].lastName + '</td><td>' + result[elem].email + '</td><td>' + result[elem].username + '</td></tr>')
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body class="container">
+    <h3>Click on the button to get a response from the server.</h3>
+    <button onclick="getData()">Click me!!!</button>
+    <table id="users" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+</body>
+</html>

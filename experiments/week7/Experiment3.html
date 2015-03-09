@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+
+    <!-- ANGULAR CUSTOM -->
+    <script src="js/app3.js"></script>
+</head>
+<body ng-app="RestCentralApp" ng-controller="parentController" class="container">
+    <fieldset>
+        <div>
+            <h3>Mongoose delete from DB</h3>
+            <a href="http://mymongo-ayaskant.rhcloud.com/exp3">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+           The previous experiment has been extended to add delete functionality. Now when the list of users is shown, a delete button is also displayed next to each row. CLicking on it will delete that entry from MongoDB.
+
+         
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        Thefollowing lines of code accept a Delete method request from the UI, parse the id to be deleted from the URL and then deletes the entry from mongoose.
+        <pre> 
+        app.delete('/deleteuser/:id', function (req, res) {
+            User.remove({ _id: req.params.id }, function (err, count) {
+                User.find(function (err, data) {
+                    res.json(data);
+                });
+            });
+        });
+        </pre>
+        
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week7/Experiment3/server.js" target="_blank">server.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week7/Experiment3/public/exp3.html" target="_blank">html</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://mongoosejs.com/docs/" target="_blank">mongoosejs.com</a>
+    </fieldset>
+</body>
+</html>

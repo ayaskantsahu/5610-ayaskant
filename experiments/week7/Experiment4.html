@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    
+
+   
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Mongoose update in MongoDB</h3>
+            <a href="http://mymongo-ayaskant.rhcloud.com/exp4">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            The previous experiment has been further extended to allow edit/update of each user. On clicking of edit button, a form with the fields already populated appears and any modification if submitted will be committed into MongoDB.
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This snippet allows receiving the request with a put method and then updating the model after fetching it first from the DB.
+        <pre> 
+        app.put('/edituser/:id', function (req, res) {
+            var user = req.body;
+            User.findById(req.params.id, function (err, data) {
+                data.firstName = user.firstName;
+                data.lastName = user.lastName;
+                data.email = user.email;
+                data.username = user.username;
+                data.save(function (err, data) {
+                    User.find(function (err, data) {
+                        res.json(data);
+                    });
+                });
+            });
+        });
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week7/Experiment4/server.js" target="_blank">server.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week7/Experiment4/public/exp4.html" target="_blank">html</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://mongoosejs.com/docs/" target="_blank">mongoosejs.com</a>
+    </fieldset>
+</body>
+</html>
