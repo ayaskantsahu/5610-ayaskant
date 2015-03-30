@@ -4,4 +4,5 @@ week3/week3.html?week3.txt	Week 3 - Jquery
 week4/week4.html?week4.txt	Week 4 - AngularJS
 week5/week5.html?week5.txt	Week 5 - AngularJS - Routing, Services
 week6/week6.html?week6.txt	Week 6 - NodeJS
-week7/week7.html?week6.txt	Week 7 - Mongoose and mongoDB
+week7/week7.html?week7.txt	Week 7 - Mongoose and mongoDB
+week8/week8.html?week8.txt	Week 8 - Passport.js

@@ -1,0 +1,26 @@
+<form class="form-horizontal" style="width: 75%;">
+    <div class="form-group">
+        <label for="appName" class="control-label col-xs-4">Application Name</label>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="appName" placeholder="Application Name" ng-model="application.name">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="url" class="control-label col-xs-4">URL</label>
+        <div class="col-xs-8">
+            <input type="url" class="form-control" id="url" placeholder="URL" ng-model="application.url">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="reqType" class="control-label col-xs-4">Request Type</label>
+        <div class="col-xs-8">
+            <select class="form-control" id="reqType" ng-model="application.requestType" ng-options="i for i in possibleTypes"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-offset-4 col-xs-8">
+            <button class="btn btn-primary" type="button" ng-click="reset()">RESET</button>
+            <button class="btn btn-primary" type="button" ng-click="saveApplication(application)">SAVE</button>
+        </div>
+    </div>
+</form>
