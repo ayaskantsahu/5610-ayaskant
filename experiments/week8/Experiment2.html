@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+
+
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Registration using passport.js</h3>
+            <a href="http://passportapp-ayaskant.rhcloud.com/signup">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            This is a demonstration of Passport.js with mongoDB and node.js
+
+            Passport.js is the leading library for Node.js for authentication and authorization. It normally registers users into MongoDB and then authenticates based on it.
+            This experiment showcases registration using Passport.js
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This snippet is used to check if the user exists in the DB. If not it creates a new user, else it returns error.
+        <pre> 
+                passport.use('signup', new LocalStrategy({
+                    passReqToCallback : true
+                },
+                function(req, username, password, done) {
+                    findOrCreateUser = function(){
+                      // find a user in Mongo with provided username
+                        User.findOne({'username':username}, function(err, user) {
+                        // In case of any error return
+                            if (err){
+                              console.log('Error in SignUp: '+err);
+                              return done(err);
+                            }
+                            // already exists
+                            if (user) {
+                              console.log('User already exists');
+                              return done(null, false, 
+                                 req.flash('message','User Already Exists'));
+                            } else {
+                              // if there is no user with that email
+                              // create the user
+                              var newUser = new User();
+                              // set the user's local credentials
+                              newUser.username = username;
+                              newUser.password = newUser.generateHash(password);
+                              newUser.email = req.param('email');
+                              newUser.firstName = req.param('firstName');
+                              newUser.lastName = req.param('lastName');
+         
+                              // save the user
+                              newUser.save(function(err) {
+                                if (err){
+                                  console.log('Error in Saving user: '+err);  
+                                  throw err;  
+                                }
+                                console.log('User Registration succesful');    
+                                return done(null, newUser);
+                              });
+                            }
+                        });
+                    };
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week8/Experiment1/passport.js" target="_blank">passport.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week8/Experiment1/public/register.html" target="_blank">register.html</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://passportjs.org/" target="_blank">passportjs.org</a>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+
+
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Creating model classes with mongoose</h3>
+            
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            The model classes will be used throughout the application to transfer data from one layer to another, specially on the server side. Our model deals with user authentication, staff shift and the staff himself. Thus we have 3 mongoose model classes as shown below. These classes are basically saved as collections in mongoDB
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This is the user class. This is used in authentication and user profile editing.
+        <pre> 
+        var UserSchema = new Schema({
+	        firstName : String,
+                lastName : String,
+	        email : String,
+                username : String,
+                password : {type : String, default: ''}
+        });
+        UserSchema.methods.generateHash = function(password) {
+            return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+        };
+        // checking if password is valid
+        UserSchema.methods.validPassword = function(password) {
+            return bcrypt.compareSync(password, this.password);
+        };
+        </pre>
+        <br/>
+        <br/>
+        This is the ShiftAssignment class. This is used for storing the information about shich staff was assigned which task in a specific shift
+        <pre>
+        var ShiftAssignment = new Schema({
+            "shift_id": Number,
+	        "user_id": Number,
+	        "location_id": Number,
+	        "position_id": Number,
+	        "site_id": Number,
+	        "start_time": Date,
+	        "end_time": Date
+        });
+        </pre>
+        <br />
+        <br />
+        This is the staff class. This will store information about each staff member who worked in a shift.
+        <pre>
+        var Staff = new Schema({
+	        id : Number,
+	        first_name : {type : String, default: ''},
+	        last_name : {type : String, default: ''},
+	        email : {type : String, default: ''},
+	        phone_number : {type : String, default: ''},
+	        notes : {type : String, default: ''}
+        });
+
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week9/Experiment1/Models.js" target="_blank">Models.js</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://mongoosejs.com/" target="_blank">mongoosejs.com/</a>
+    </fieldset>
+</body>
+</html>

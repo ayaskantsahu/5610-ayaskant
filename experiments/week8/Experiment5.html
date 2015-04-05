@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+
+
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Logout using passport.js</h3>
+            <a href="http://passportapp-ayaskant.rhcloud.com/login">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            This experiment shows how passport.js can be used to log the user out. The existing session will be invalidated in this case.
+            This is a demonstration of Passport.js with mongoDB and node.js
+
+            Passport.js is the leading library for Node.js for authentication and authorization. It normally registers users into MongoDB and then authenticates based on it.
+            
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        These lines are used to Log a user out when he clicks on the log out button. The logout() method in request object basically invalidates the session of the user.
+        <pre> 
+        app.get('/logout', function(req, res) {
+		    req.logout();
+		    res.redirect('/');
+	    });
+        </pre>
+        <br />
+        <br />
+        
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week8/Experiment1/routes.js" target="_blank">routes.js</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://passportjs.org/" target="_blank">passportjs.org</a>
+    </fieldset>
+</body>
+</html>

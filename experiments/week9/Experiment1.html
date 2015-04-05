@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Designing the homepage</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+
+
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Designing the homepage</h3>
+            <a href="http://infocommonsscheduler-ayaskantsahu.rhcloud.com/dashboard">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <h3>You will need to register and sign in to view the home page</h3>
+            The homepage has been designed using bootstrap. The base template was abailable at bootstrap website and it has been modified to fit my requirements.
+            Thus the entire project will be a single page application and will be responsive as well.
+
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+       These lines show how the navbar was created. You can notice the bootstrap classes used to design the navigation bar. nav tag has been used got html 5 complaince.
+        <pre> 
+            &lt;nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"&gt;
+            &lt;!-- Brand and toggle get grouped for better mobile display --&gt;
+                &lt;div class="navbar-header"&gt;
+                &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"&gt;
+                &lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;
+                &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                    &lt;/button&gt;
+                &lt;a class="navbar-brand" href="index.html"&gt;Infocommons Scheduler&lt;/a&gt;
+                &lt;/div&gt;
+        </pre>
+        <br />
+        <br />
+        These lines represent the main content body where angular partials will be loaded. Notice the ng-view directive which is used to achieve the partial view loading with angular.js
+        <pre>
+        
+        &lt;div id="page-wrapper"&gt;
+            &lt;div class="container-fluid"&gt;
+                
+                &lt;!-- ANGULAR DYNAMIC CONTENT --&gt;
+            &lt;div ng-view&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        index.html
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week9/Experiment1/index.html" target="_blank">index.html</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://getbootstrap.com/" target="_blank">getbootstrap.com/</a>
+    </fieldset>
+</body>
+</html>

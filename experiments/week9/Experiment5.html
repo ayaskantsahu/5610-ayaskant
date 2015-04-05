@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Searching staff by calling WhenIWork API</h3>
+            <a href="http://infocommonsscheduler-ayaskantsahu.rhcloud.com/searchStaff/ayas">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <h3>Replace ayas with anything else in the URL to get different results.</h3>
+            This experiment shows how to call REST Api from node.js and return data in response to the client. It has been achieved by using two libraries. Express.js for handling client request and sending out response. node-rest-client has been used to make the REST api call to WhenIWork.
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This is the express.js code to accept the request from the UI and the filter the results from webservice call to be returned to the UI.
+        <pre> 
+        app.get('/searchStaff/:searchTerm', function(req,res){
+				var searchTerm = req.params.searchTerm;
+				args ={
+						headers:{"W-Token":"xxxxxx..xxxxxxx....xxxxxxxxx"} // request headers 
+				};
+				client.get("https://api.wheniwork.com/2/users", args, 
+						function(data, response){
+						// parsed response body as js object 
+						console.log(data);
+						var result = [];
+						for(var i = 0; i < data.users.length; i++)
+						{
+								if (data.users[i].first_name.toLowerCase().lastIndexOf(searchTerm.toLowerCase(), 0) === 0 || data.users[i].last_name.toLowerCase().lastIndexOf(searchTerm.toLowerCase(), 0) === 0) {
+										result.push(data.users[i]);
+								}
+						}
+						res.json(result);
+				});
+		});
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week8/Experiment1/routes.js" target="_blank">routes.js</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="https://www.npmjs.com/package/node-rest-client" target="_blank">node-rest-client</a>
+    </fieldset>
+</body>
+</html>

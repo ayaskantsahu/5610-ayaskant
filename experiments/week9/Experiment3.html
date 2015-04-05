@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+
+
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Routing using angularjs</h3>
+            <a href="http://infocommonsscheduler-ayaskantsahu.rhcloud.com/dashboard">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <h3>You will need to register and sign in to view the home page</h3>
+            Angular js arouting has been used to make the most of partials. This enables loading of html chunks withing a page without refreshing the entire page. Angular route is used for this purpose. In my case, the various links on the menu lead to different pages. Angular routing has been used to achieve this.
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+       These lines define the links on the html which will invoke angular routing upon interaction.
+        <pre> 
+            &lt;li&gt;
+                &lt;a href="/viewTimeRange"&gt;Time based&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href="/viewStaff"&gt;User based&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href="/viewAll"&gt;All Staff&lt;/a&gt;
+            &lt;/li>
+        </pre>
+        <br/>
+        <br/>
+        These lines are the routes configured in angular js. They help loading of partials and also specify which controller will handle the new partial loaded and its data.
+        <pre>
+         $routeProvider
+		.when('/assignRole', {
+			templateUrl: 'views/AssignRole.html',
+			controller: 'AssignRoleController'
+		})
+		.when('/viewAll', {
+			templateUrl: 'views/AllStaffView.html',
+			controller: 'AllStaffController'	
+		})
+		.when('/viewStaff', {
+			templateUrl: 'views/SingleUserView.html',
+			controller: 'SingleUserController'	
+		})
+		.when('/dashboard', {
+			templateUrl: 'views/Dashboard.html',
+			controller: 'DashboardController'	
+		})
+		.when('/viewTimeRange', {
+			templateUrl: 'views/TimeRangeView.html',
+			controller: 'TimeRangeController'	
+		})
+		.otherwise({
+			redirectTo: '/dashboard'
+		});
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week9/Experiment1/appRoutes.js" target="_blank">appRoutes.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week9/Experiment1/index.html" target="_blank">index.html</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://passportjs.org/" target="_blank">passportjs.org</a>
+    </fieldset>
+</body>
+</html>

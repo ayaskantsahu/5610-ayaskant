@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Starter Node and Angular</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+
+
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Setting up passport.js</h3>
+            <a href="http://passportapp-ayaskant.rhcloud.com/login">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            This expriment shows how passport.js can be setup. This involves the importing of libraris and setting up of serialization and deserialization strategies.
+            This is a demonstration of Passport.js with mongoDB and node.js
+
+            Passport.js is the leading library for Node.js for authentication and authorization. It normally registers users into MongoDB and then authenticates based on it.
+            
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+       These lines mention the logic for serialization and deserialization. It also shows that we are using local strategy for our passport authetication.
+        <pre> 
+            // load all the things we need
+            var LocalStrategy   = require('passport-local').Strategy;
+
+            // model representing data.
+            var models = require('../app/models/Models.js');
+            // load up the user model
+            var User = models.User;
+            
+            // expose this function to our app using module.exports
+            module.exports = function(passport) {
+                // =========================================================================
+                // passport session setup ==================================================
+                // =========================================================================
+                // required for persistent login sessions
+                // passport needs ability to serialize and unserialize users out of session
+                // used to serialize the user for the session
+                passport.serializeUser(function(user, done) {
+                    done(null, user.id);
+                });
+                // used to deserialize the user
+                passport.deserializeUser(function(id, done) {
+                    User.findById(id, function(err, user) {
+                        done(err, user);
+                    });
+                });
+        </pre>
+        <br />
+        <br />
+        These lines show which libraries are improted to make passport.js work. They also show whow exactly are they initialized.
+        <pre>
+        
+        var passport = require('passport');
+        var morgan       = require('morgan');
+        var cookieParser = require('cookie-parser');
+        var session      = require('express-session');
+        var flash = require('connect-flash');
+
+        app.use(session({ secret: 'ayaskantsahu' })); // session secret
+        app.use(passport.initialize());
+        app.use(passport.session()); // persistent login sessions
+        app.use(morgan('dev')); // log every request to the console
+        app.use(flash());
+        
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week8/Experiment1/passport.js" target="_blank">passport.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week8/Experiment1/server.js" target="_blank">server.js</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://passportjs.org/" target="_blank">passportjs.org</a>
+    </fieldset>
+</body>
+</html>
