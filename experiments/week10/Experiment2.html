@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>UI for assigning shifts</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+
+
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>UI for assigning shifts</h3>
+            <a href="http://infocommonsscheduler-ayaskantsahu.rhcloud.com/assignRole">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <h3>You will need to register and sign in to view this page</h3>
+            After getting the map of json from the server based on a certain date, the user is shown the list of time slots available. On choosing the timeslot, the user is presented with selectboxes for each possile role. The staff available during that particular time slow are only visible in the select box options.
+            <br/>
+            Choose a date and then choose a shift to get the display.
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This is the HTML code for rendering the UI. The flow starts with a date picker and ends when the user saves his preference. Angular models are used to generate the layout based on different time slots and roles available.
+        <pre> 
+        &lt;div class="container-fluid" ng-controller="AssignRoleController"&gt;
+            &lt;input type="date" ng-model="selectedDate" /&gt; &lt;button class=".btn-primary" ng-click="getStaffAssignment()"&gt;Get Assignments&lt;/button&gt;
+            &lt;div ng-repeat="(key,value) in data"&gt;
+                &lt;button class="btn-block btn-info" ng-click="populateAssignment(key)"&gt;{{ key }}&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="container-fluid" ng-show="users.length &gt; 0"&gt;
+                &lt;div class="form-group"&gt;
+                    &lt;div ng-repeat="role in roles"&gt;
+            
+                        &lt;label for="{{role}}"&gt;{{role}}&lt;/label&gt;
+                        &lt;select class="form-control input-medium" ng-model="assignments[role]" id="{{role}}"&gt;
+                            &lt;option ng-repeat="item in users" value="{{item.id}}"&gt;{{item.first_name}}&nbsp;{{item.last_name}}&lt;/option&gt;
+                        &lt;/select&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button class="btn-success" ng-click="saveShiftAssignment()"&gt;Save&lt;/button&gt;
+            &lt;/div&gt;   
+        &lt;/div&gt;
+        </pre>
+        <br/>
+        <br/>
+        This is the javascript code for maintining scope variable and handling events. This code illustrstrates how the data is used and created for further proecssing.
+        <pre>
+        app.controller('AssignRoleController', function($scope, RestCentralService, $location) {
+            $scope.data = [];
+            $scope.users = [];
+            $scope.roles = roles;
+            $scope.assignments = {};
+            var currentTime;
+            $scope.getStaffAssignment = function(){
+                RestCentralService.getStaffAssignment($scope.selectedDate).then(function(result) {
+                    $scope.data = result.staff;
+                });
+            }
+    
+            $scope.populateAssignment = function(time){
+                currentTime = time;
+                var users = $scope.data[time];
+                $scope.users = users;
+            }
+    
+            $scope.saveShiftAssignment = function(){
+                var assignment = $scope.assignments;
+                var data = [];
+                for(key in assignment)
+                {
+                    data.push({userId : assignment[key], role : key, time : currentTime});
+                }
+                RestCentralService.saveShiftAssignment(data).then(function(result) {
+                    console.log(result);
+                });
+            }
+        });
+        </pre>
+        <br />
+        <br />
+        This is the staff class. This will store information about each staff member who worked in a shift.
+        <pre>
+        var Staff = new Schema({
+	        id : Number,
+	        first_name : {type : String, default: ''},
+	        last_name : {type : String, default: ''},
+	        email : {type : String, default: ''},
+	        phone_number : {type : String, default: ''},
+	        notes : {type : String, default: ''}
+        });
+
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week10/Experiment1/app.js" target="_blank">app.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week10/Experiment1/AssignRole.html" target="_blank">AssignRole.html</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://www.w3schools.com/" target="_blank">w3schools.com</a>
+    </fieldset>
+</body>
+</html>

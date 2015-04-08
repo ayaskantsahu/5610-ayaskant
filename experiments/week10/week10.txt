@@ -1,0 +1,5 @@
+﻿Experiment1.html	Experiment 1 - Fetching data of shifts and users and joining them
+Experiment2.html	Experiment 2 - UI for assigning roles to staff on shift
+Experiment3.html	Experiment 3 - Saving of assigned roles into MongoDB
+Experiment4.html	Experiment 4 - Search staff based on name using rest API.
+Experiment5.html	Experiment 5 - Integration with passportjs for authentication.

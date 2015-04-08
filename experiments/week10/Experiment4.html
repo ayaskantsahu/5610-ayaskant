@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Search for a user</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+
+
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Search for a user</h3>
+            <a href="http://infocommonsscheduler-ayaskantsahu.rhcloud.com/viewAll">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <h3>You will need to register and sign in to view the home page</h3>
+            This experiment is built upon the last week's search by user name web service call. This UI provides an auto suggest based on the search feature and also displays the user details of the selected user. All data is fetched from the web service on usage of the autocomplete.
+            <br/>
+            Typeahead (ui.bootstrap.typeahead) plugin has been used to implement the autocomplete feature.
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+        This is the HTML code for implementing the autocomplete and displaying the user details. The autocomplete calls the webservice each time text changes in the input. It fetches the list of users based on match and populates them in the suggestion list.
+        <pre> 
+        &lt;script type="text/ng-template" id="customTemplate.html"&gt;
+            &lt;a&gt;
+            &lt;img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/{{match.model.flag}}" width="16"&gt;
+            &lt;span bind-html-unsafe="match.label | typeaheadHighlight:query"&gt;&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/script&gt;
+        &lt;div class="container-fluid"&gt;
+            &lt;div class="form-group move-down"&gt;
+                    &lt;label for="Autocomplete"&gt;Search for a user&lt;/label&gt;
+                    &lt;input type="text" ng-model="selectedStaff" placeholder="Enter name to search for" typeahead="name as name.name for name in getStaff($viewValue)" typeahead-loading="loadingLocations" class="form-control" id="Autocomplete"&gt;
+                    &lt;i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"&gt;&lt;/i&gt;
+            &lt;/div&gt;
+                    &lt;div class="container-fluid" ng-show="selectedStaff.data"&gt;
+                    &lt;div class="row"&gt;
+            
+                    &lt;div class="col-md-6"&gt;&lt;img ng-src="{{selectedStaff.data.url}}" class="img-responsive" /&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                    &lt;div class="row"&gt;
+                    &lt;div class="col-md-3"&gt;Name : &lt;/div&gt;
+                    &lt;div class="col-md-6"&gt;{{selectedStaff.name}}&lt;/div&gt;
+                &lt;/div&gt;
+                    &lt;div class="row"&gt;
+                    &lt;div class="col-md-3"&gt;Email : &lt;/div&gt;
+                    &lt;div class="col-md-6"&gt;{{selectedStaff.data.email}}&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt; 
+        &lt;/div&gt;
+        </pre>
+        <br />
+        <br />
+        This is the controller code for the search staff feature. It has function which calls the service to get the data from an ajax call. The call then used the API created for last week's experiment to search a user by name.
+        <pre>
+        app.controller('AllStaffController', function($scope, RestCentralService, $location) {
+            $scope.getStaff = function(name){
+                return RestCentralService.getStaff(name).then(function(result){
+                    var names = [];
+                    for(var i=0; i< result.length; i++)
+                    {
+                        names.push({name : result[i].first_name + " "+result[i].last_name, data : result[i]});
+                    }
+                    return names;
+                });
+            }
+        });
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week10/Experiment1/app.js" target="_blank">app.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week10/Experiment1/AllStaffView.html" target="_blank">AllStaffView.html</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://angular-ui.github.io/bootstrap/" target="_blank">angular-ui.github.io</a>
+    </fieldset>
+</body>
+</html>

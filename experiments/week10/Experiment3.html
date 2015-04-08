@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Saving shift assignment to mongoDB</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+
+
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Routing using angularjs</h3>
+            <a href="http://infocommonsscheduler-ayaskantsahu.rhcloud.com/assignRole">Link to experiement</a>
+            <img src="../images/mongo.png" />
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            <h3>You will need to register and sign in to view the home page</h3>
+            MongoDB is accessed by using Mongoose ODM. I have created schema using mongoose. Thus after the UI sends the json object, We use it directly in mongoose schema to create a model.
+            Then this model is savved into MongoDB for future use.
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+       This is the express.js code related with the same operation. it handles a post call and fetches thedata from it. After that it saves the data for each element received in the request.
+        <pre> 
+        app.post('/saveShiftAssignment', function(req, res){
+			var shiftAssign = req.body.shiftAssign;
+			for(shift in shiftAssign)
+			{
+				var shiftModel =  new models.ShiftAssignment(shiftAssign[shift]);
+				console.log(shift);
+				shiftDao.saveShift(shiftModel, function(result){
+					res.send(result);	
+				});
+			}
+			
+		});
+        </pre>
+        <br/>
+        <br/>
+        This is the mongoose schema which is used to represent the shiftAssignment. We use the userId field to associate it with an existing staff.
+        <pre>
+        var ShiftAssignment = new Schema({
+	        "userId": Number,
+	        "time": Date,
+	        "role" : String
+        });
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week10/Experiment1/Models.js" target="_blank">Models.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week10/Experiment1/routes.js" target="_blank">routes.js</a>
+        <a href="../../fileview/Default.aspx?~/experiments/week10/Experiment1/ShiftDao.js" target="_blank">ShiftDao.js</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://mongoosejs.com/" target="_blank">mongoosejs</a>
+    </fieldset>
+</body>
+</html>

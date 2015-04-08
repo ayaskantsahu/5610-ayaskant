@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Getting all shifts for a day</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- JS -->
+
+
+    <!-- ANGULAR CUSTOM -->
+</head>
+<body class="container">
+    <fieldset>
+        <div>
+            <h3>Getting all shifts for a day</h3>
+            <a href="http://infocommonsscheduler-ayaskantsahu.rhcloud.com/getShifts/apr 8,2015">Link to experiement</a>
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>About the experiment</h3>
+        <div>
+            
+            The data from WhenIWork is presented in form of a list of shifts and a list of users for all those shifts. We must create a map of all the shifts and a list of all the users who are working in the specific time slot. This required some searching in the lists.
+
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Code Snippets</h3>
+       These lines are for the express route which accepts the date as parameter and then fires a web service call to WhenIWorkusing the date. After it receives the response, it creates the map which is required by the UI.
+        <pre> 
+        app.get('/getShifts/:date', function(req,res){
+			var date = req.params.date;
+			var startDate = new Date(date);
+			console.log(date + " - " +startDate.getMonth());
+			var endDate = new Date();
+			endDate.setDate(startDate.getDate() + 1);
+			var startStr = startDate.getFullYear() + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate();
+			var endStr = endDate.getFullYear() + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+			args = {
+						headers:{"W-Token":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}, // request headers
+						parameters : {location_id : 75480, start : startStr, end : endStr}
+			};
+			console.log(args);
+			client.get("https://api.wheniwork.com/2/shifts/?location_id="+"75480&start="+startStr+"&end=" +endStr+ date, args, function(data, response){
+					// parsed response body as js object 
+					console.log("hi-"+data);
+					
+					var shifts = data.shifts;
+					var respData = {};
+					var shiftUserMap = {};
+					var temp;
+					for(var i=0; i < shifts.length; i++)
+					{
+						var user = getUser(data.users, shifts[i].user_id);
+						if (shiftUserMap[shifts[i].start_time]) {
+							temp = shiftUserMap[shifts[i].start_time];
+							temp.push(user);
+							shiftUserMap[shifts[i].start_time] = temp;
+						}
+						else {
+							shiftUserMap[shifts[i].start_time] = [user];
+						}
+					}
+					var assignments = models.ShiftAssignment.find({date : date}, function(err, data){
+						respData.assigned = data;
+						respData.staff = shiftUserMap;
+						res.json(respData);	
+					});
+					
+			});	
+		});
+        </pre>
+        <br />
+        <br />
+        These lines are the function which finds a user object from the users list based on the userId.
+        <pre>
+        
+        function getUser(users, userId){
+			for(var i=0; i < users.length; i++)
+			{
+				if (users[i].id == userId) {
+					return users[i];
+				}
+			}
+		}
+        </pre>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>Source Code</h3>
+        <a href="../../fileview/Default.aspx?~/experiments/week10/Experiment1/routes.js" target="_blank">routes.js</a>
+    </fieldset>
+    <br />
+    <br />
+    <fieldset>
+        <h3>References</h3>
+        <a href="http://expressjs.com/" target="_blank">expressjs.com</a>
+        <a href="https://www.npmjs.com/package/node-rest-client" target="_blank">node-rest-client</a>
+    </fieldset>
+</body>
+</html>
