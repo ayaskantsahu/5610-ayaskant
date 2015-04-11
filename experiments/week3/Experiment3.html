@@ -59,7 +59,7 @@
         <h3>About the experiment</h3>
         <div>
             <span>
-                effect() method applies an animation effect to the elements without having to show or hide it.
+                effect() method applies an animation effect to the elements without having to show or hide it. Animation can be many types. For example explode, bounce, Clip,etc
             </span>
         </div>
     </fieldset>
@@ -79,6 +79,7 @@
             });
         </pre>
         <div>Shake Effect</div>
+        Shake effect is shown with a vigourous moving effect which slowly settles down.
         <pre>
             $('#explodingBox2').click(function () {
                 $("#explodingBox2").effect("shake", {
@@ -89,7 +90,8 @@
                 });
             });
         </pre>
-        <div>Blind Effect</div>
+        <div>Blind Effect </div>
+        Blind is used to generally hide or show elements with a gradual effect like blinds in the room.
         <pre>
             $('#explodingBox3').click(function () {
                 $( "#explodingBox3" ).hide( "blind", {times: 10, distance: 100}, 1000, callback );
