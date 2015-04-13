@@ -64,7 +64,7 @@
 
 	<header>			
 		<nav>
-			<div class='container'>
+			<div class='mycontainer'>
 				<div class='five columns logo'>
 					<a href='www.linkedin.com/in/sahuayaskant'><h3>Ayaskant Sahu</h3></a>
 				</div>
@@ -88,7 +88,7 @@
 			</div>
 		</nav>
 
-		<div class='container'>
+		<div class='mycontainer'>
 			<div class='slogan'>
 				<div class='ten columns'>
 					<img src="me.png" width="250" height="250"/>
@@ -97,7 +97,7 @@
 				<div class='six columns'>
 					<h4>Welcome!!</h4>
 					<p>This is my responsive homepage and it is built without using bootstrap. Media queries have been used instead.</p>
-					<a href='#' class='button medium green'>See the code</a>
+					<a href='https://github.com/ayaskantsahu/5610-ayaskant/tree/master/css' class='button medium green'>See the code</a>
 				</div>
 			</div>
 		</div>	
@@ -108,7 +108,7 @@
 	<div class='clear'></div>
 
 
-	<div class='container'>
+	<div class='mycontainer'>
 
 		<div class='one-third column'>
 			<img src='images/misc/about_us.png'>
@@ -136,7 +136,7 @@
 	<div class='clear'></div>
 
 	<footer>
-		<div class='container'>
+		<div class='mycontainer'>
 			
 			<div class='eight columns'>
 				<h5>Thank you for visiting my page</h5>
