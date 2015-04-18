@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h2 class="text-center">Assign Role</h2>
+        Assign Role allows the admin to assign roles to staff on a particular shift. This can be achieved by the following steps.
+        <ol>
+            <li>Select a date to see shifts</li>
+            <li>Press get shifts button</li>
+            <li>Select a shift from the listed shifts</li>
+            <li>Only the staff available in that shift are shown in the dropdown.</li>
+            <li>Save the selections after deciding roles.</li>
+            <li>Data is saved in MongoDB</li>
+        </ol>
+        <br />
+        <br />
+        <img class="img-responsive img-thumbnail center-block" src="images/assignRole.png">
+        
+    </div>
+
+    <div class="container">
+        <h2 class="text-center">Validation</h2>
+        <br />
+        <br />
+        <img class="img-responsive img-thumbnail center-block" src="images/assignRoleValidation.png">
+    </div>
+
+        <div class="container">
+            <h3 class="text-left">JSON data</h3>
+            The data is heavily preprocessed after getting the data from WhenIWork. This new structure allows us to associate list of users in a perticular shift.
+            <pre>
+{  
+   "assigned":[  
+   ],
+   "staff":{  
+      "Sat, 18 Apr 2015 00:00:00 -0400":[  
+         {  
+            "id":2101173,
+            "account_id":42631,
+            "role":3,
+            "first_name":"Bhakti",
+            "last_name":"Rane",
+            "avatar":{  
+               "url":"https://avatars.wheniwork.com/c2b3504587e0983113836d591653603c71ac14c5/%s",
+               "size":"%s"
+            },
+            "is_hidden":false,
+            "is_private":true,
+            "is_deleted":false,
+            "has_email":true,
+            "positions":[  
+               143178
+            ],
+            "locations":[  
+               75480
+            ],
+            "position_rates":[  
+            ],
+            "position_quality":{  
+               "143178":3
+            },
+            "sort":{  
+               "75480":0
+            }
+         },
+         {  
+            "id":2101893,
+            "account_id":42631,
+            "role":3,
+            "first_name":"Udit",
+            "last_name":"Shah",
+            "avatar":{  
+               "url":"https://avatars.wheniwork.com/99a43553837d4fbf8b627473a1cc018af04819e1/%s",
+               "size":"%s"
+            },
+            "is_hidden":false,
+            "is_private":true,
+            "is_deleted":false,
+            "has_email":true,
+            "positions":[  
+               143178
+            ],
+            "locations":[  
+               75480
+            ],
+            "position_rates":[  
+            ],
+            "position_quality":{  
+               "143178":3
+            },
+            "sort":{  
+               "75480":0
+            }
+         }
+      ]
+   }
+}
+        </pre>
+        </div>
+</body>
+</html>

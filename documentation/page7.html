@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h2 class="text-center">All Staff Stats</h2>
+        This view allows the admin to view the percentage of allocation for each staff who has been assigned work.
+        <ol>
+            <li>Select a date range to see shifts</li>
+            <li>Press get shiftss button</li>
+            <li>The results are fetched from mongoDB</li>
+            <li>Results are preprocessed to bring them to UI usable structure</li>
+            <li>Results are shown</li>
+        </ol>
+        <br />
+        <br />
+        <img class="img-responsive img-thumbnail center-block" src="images/allStaff.png">
+        
+    </div>
+
+    <div class="container">
+        <h2 class="text-center">Validation</h2>
+        <br />
+        <br />
+        <img class="img-responsive img-thumbnail center-block" src="images/allStaffValidation.png">
+    </div>
+
+        <div class="container">
+            <h3 class="text-left">JSON data</h3>
+            The data is heavily preprocessed after getting the data from MongoDB. This new structure allows us to show the data with ui-grid plugin.
+            <pre>
+[
+   {
+      "Name":"Guhan Krishnan",
+      "Help Desk":"100.00%",
+      "Printing":"0.00%",
+      "Floater":"0.00%",
+      "DMC":"0.00%",
+      "Total Shifts":1
+   },
+   {
+      "Name":"GoossenJan Boer",
+      "Help Desk":"0.00%",
+      "Printing":"0.00%",
+      "Floater":"0.00%",
+      "DMC":"100.00%",
+      "Total Shifts":1
+   }
+]
+        </pre>
+        </div>
+</body>
+</html>

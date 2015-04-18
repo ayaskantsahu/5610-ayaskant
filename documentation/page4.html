@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h2 class="text-center">Dashboard</h2>
+        The dashboard shows the statistics about the current shift in progress. It fetches data from WhenIWork API after intelligently figuring out which shift is underway.
+        <br />
+        <br />
+        <h3>Steps : </h3>
+        <ul>
+            <li>Browser figures out current shift.</li>
+            <li>Browser calls express route.</li>
+            <li>nodeJS calls WhenIWork API</li>
+            <li>Data is visualized on UI using AgularJS</li>
+        </ul>
+        <br />
+        <br />
+        <img class="img-responsive img-thumbnail center-block" src="images/homepage.png">
+        
+    </div>
+    
+    <div class="container">
+        <h3 class="text-left">JSON data</h3>
+        
+        <pre>
+        {
+           "start":"Sat, 18 Apr 2015 00:00:00 -0400",
+           "end":"Sat, 18 Apr 2015 08:00:00 -0400",
+           "shifts":[
+              {
+                 "id":127888082,
+                 "account_id":42631,
+                 "user_id":2101173,
+                 "location_id":75480,
+                 "position_id":143178,
+                 "site_id":0,
+                 "start_time":"Sat, 18 Apr 2015 00:00:00 -0400",
+                 "end_time":"Sat, 18 Apr 2015 08:00:00 -0400",
+                 "break_time":0,
+                 "color":"54a4cc",
+                 "notes":"",
+                 "alerted":true,
+                 "linked_users":null,
+                 "shiftchain_key":"",
+                 "published":true,
+                 "published_date":"Fri, 10 Apr 2015 17:03:05 -0400",
+                 "notified_at":"Fri, 10 Apr 2015 17:03:06 -0400",
+                 "instances":1,
+                 "created_at":"Fri, 10 Apr 2015 17:01:31 -0400",
+                 "updated_at":"Fri, 17 Apr 2015 22:00:21 -0400",
+                 "acknowledged":1,
+                 "creator_id":590458,
+                 "is_open":false,
+                 "actionable":false,
+                 "block_id":0
+              },
+              {
+                 "id":127888097,
+                 "account_id":42631,
+                 "user_id":2101893,
+                 "location_id":75480,
+                 "position_id":143178,
+                 "site_id":0,
+                 "start_time":"Sat, 18 Apr 2015 00:00:00 -0400",
+                 "end_time":"Sat, 18 Apr 2015 08:00:00 -0400",
+                 "break_time":0,
+                 "color":"54a4cc",
+                 "notes":"",
+                 "alerted":true,
+                 "linked_users":null,
+                 "shiftchain_key":"",
+                 "published":true,
+                 "published_date":"Fri, 10 Apr 2015 17:03:05 -0400",
+                 "notified_at":"Fri, 10 Apr 2015 17:03:06 -0400",
+                 "instances":1,
+                 "created_at":"Fri, 10 Apr 2015 17:01:38 -0400",
+                 "updated_at":"Fri, 17 Apr 2015 22:00:21 -0400",
+                 "acknowledged":1,
+                 "creator_id":590458,
+                 "is_open":false,
+                 "actionable":false,
+                 "block_id":0
+              }
+           ],
+           "users":[
+              {
+                 "id":2101173,
+                 "account_id":42631,
+                 "role":3,
+                 "first_name":"Bhakti",
+                 "last_name":"Rane",
+                 "avatar":{
+                    "url":"https://avatars.wheniwork.com/c2b3504587e0983113836d591653603c71ac14c5/%s",
+                    "size":"%s"
+                 },
+                 "is_hidden":false,
+                 "is_private":true,
+                 "is_deleted":false,
+                 "has_email":true,
+                 "positions":[
+                    143178
+                 ],
+                 "locations":[
+                    75480
+                 ],
+                 "position_rates":[
+                 ],
+                 "position_quality":{
+                    "143178":3
+                 },
+                 "sort":{
+                    "75480":0
+                 }
+              },
+              {
+                 "id":2101893,
+                 "account_id":42631,
+                 "role":3,
+                 "first_name":"Udit",
+                 "last_name":"Shah",
+                 "avatar":{
+                    "url":"https://avatars.wheniwork.com/99a43553837d4fbf8b627473a1cc018af04819e1/%s",
+                    "size":"%s"
+                 },
+                 "is_hidden":false,
+                 "is_private":true,
+                 "is_deleted":false,
+                 "has_email":true,
+                 "positions":[
+                    143178
+                 ],
+                 "locations":[
+                    75480
+                 ],
+                 "position_rates":[
+                 ],
+                 "position_quality":{
+                    "143178":3
+                 },
+                 "sort":{
+                    "75480":0
+                 }
+              }
+           ],
+           "locations":[
+              {
+                 "id":75480,
+                 "account_id":42631,
+                 "is_default":0,
+                 "name":"InfoCommons",
+                 "sort":2,
+                 "max_hours":0,
+                 "address":"Northeastern University, Snell Library, Boston, MA 02115",
+                 "coordinates":[
+                 ],
+                 "latitude":0,
+                 "longitude":0,
+                 "ip_address":"",
+                 "created_at":"Tue, 12 Nov 2013 05:49:39 -0500",
+                 "updated_at":"Mon, 17 Mar 2014 21:34:57 -0400",
+                 "is_deleted":false
+              }
+           ],
+           "positions":[
+              {
+                 "id":143178,
+                 "account_id":42631,
+                 "name":"InfoCommons",
+                 "color":"54a4cc",
+                 "sort":0,
+                 "created_at":"Wed, 22 Jan 2014 08:05:27 -0500",
+                 "updated_at":"Sat, 04 Apr 2015 08:16:11 -0400",
+                 "is_deleted":false
+              }
+           ]
+        }
+        </pre>
+    </div>
+</body>
+</html>

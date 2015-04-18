@@ -83,6 +83,8 @@
                         <li><a href="blog/" target="_blank">Blog</a></li>
                         <li><a href="experiments/index.htm" target="_blank">Experiments</a></li>
                         <li><a href="https://github.com/ayaskantsahu/5610-ayaskant" target="_blank">Github</a></li>
+                        <li><a href="documentation/index.htm" target="_blank">Project Documentation</a></li>
+                        <li><a href="http://webdevproj-ayaskantsahu.rhcloud.com/dashboard" target="_blank"><b>Project</b></a></li> 
 					</ul>
 				</div>
 			</div>

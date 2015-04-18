@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h2 class="text-center">Search Staff</h2>
+        This view allows the admin to search for a specific staff using auto suggest feature.
+        <ol>
+            <li>Start typing a name. eg : ayas</li>
+            <li>Select from the list of suggested names</li>
+            <li>The results are fetched from whenIWork</li>
+            <li>On click of 'show' statistics button, data is fetched from mongo and user's utilization is shown</li>
+        </ol>
+        <br />
+        <br />
+        <img class="img-responsive img-thumbnail center-block" src="images/searchUser1.png">
+        <br />
+        <br />
+        <img class="img-responsive img-thumbnail center-block" src="images/searchUser2.png">  
+    </div>
+
+        <div class="container">
+            <h3 class="text-left">JSON data</h3>
+            The data is heavily preprocessed on the UI side after getting the data from MongoDB. This new structure allows us to show the data progress bars with angular-bootstrap plugin..
+            <pre>
+[
+   {
+      "_id":"55320ee91957c9e410005d57",
+      "userId":1960367,
+      "role":"Printing",
+      "time":"2015-04-16T04:00:00.000Z",
+      "userName":"Ayaskant Sahu",
+      "__v":0
+   },
+   {
+      "_id":"55320efe1957c9e410005d5b",
+      "userId":1960367,
+      "role":"Printing",
+      "time":"2015-04-15T04:00:00.000Z",
+      "userName":"Ayaskant Sahu",
+      "__v":0
+   },
+   {
+      "_id":"55320efe1957c9e410005d5e",
+      "userId":1960367,
+      "role":"DMC 1",
+      "time":"2015-04-15T04:00:00.000Z",
+      "userName":"Ayaskant Sahu",
+      "__v":0
+   }
+]
+        </pre>
+        </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h2 class="text-center">Overview</h2>
+        Hello, Welcome to my project Infocommons Scheduler. Infocommons is the team of Snell library which handles all the IT related support. The staff is responsible for maintaining all computers, printers and aother IT stuff. They currently use WhenIWork.com for their time and attendance system. WhenIWork allows schedules to be uploaded and student staff will be notified of the same. WhenIWork exposes Developer API to users who can query for data like shifts and the perople who are allocated to these shifts.
+        <b><em>This project will be used in real time as the requirements were specified by my supervisor at Infocommons.</em></b>
+    </div>
+    
+    <div class="container">
+        <h2 class="text-center">Requirement</h2>
+        Students are assigned different roles like Printers, Help Desk, Floater or Digital Media Commons. CUrrently this is done manually. There was a requirement of automating this process so they can track who has been assigned which role in the past and thus make decisions based on it. One such decision is to assign roles for current shift as everyone should get a fair share of each role.
+    </div>
+   
+        <div class="container">
+            <h2 class="text-center">Tech Stack used</h2>
+            I have used the MEAN stack to make the entire application a single page application.
+            <ul>
+                <li>HTML 5</li>
+                <li>CSS 3</li>
+                <li>Javascript</li>
+                <li>Bootstrap</li>
+                <li>AngularJS</li>
+                <li>NodeJS</li>
+                <li>MongoDB</li>
+                <li>ExpressJS</li>
+                <li>Mongoose ODM</li>
+                <li>PassportJS</li>
+                <li>node-rest-client</li>
+            </ul>
+        </div>
+        
+    <div class="container">
+        <h2 class="text-center">Modular structure</h2>
+        Each file has been separated as per modules. All the code for server side routing have been separated into separate file
+        <br />
+        <a href="../fileview/Default.aspx?~/documentation/files/routes.js">routes.js</a>
+        <br />
+        <br />
+        All angularJS controllers have been segregated into a single file.
+        <br />
+        <a href="../fileview/Default.aspx?~/documentation/files/app.js">app.js</a>
+        <br />
+        <br />
+        AngularJS services have been separated into a single file.
+        <br />
+        <a href="../fileview/Default.aspx?~/documentation/files/services.js">services.js</a>
+        <br />
+        <br />
+        AngularJS routes and partial loading are mentioned in a single file
+        <br />
+        <a href="../fileview/Default.aspx?~/documentation/files/app.js">appRoutes.js</a>
+        <br />
+        <br />
+        Mongoose schemas are defined in a single file
+        <br />
+        <a href="../fileview/Default.aspx?~/documentation/files/Models.js">Models.js</a>
+        <br />
+        <br />
+        Dao file is separate to distinguish DB interactions
+        <br />
+        <a href="../fileview/Default.aspx?~/documentation/files/ShiftDao.js">ShiftDao.js</a>
+        <a href="../fileview/Default.aspx?~/documentation/files/UserDao.js">UserDao.js</a>
+        <br />
+        </div>
+    
+    <div class="container">
+        <h2 class="text-center">Features</h2>
+        <ul>
+            <li>Authentication</li>
+            <li>User registration</li>
+            <li>Assign role to students on a specific shift</li>
+            <li>Dashboard for current shift</li>
+            <li>Search user and view statistics</li>
+            <li>View statistics for all staff</li>
+            <li>View role assignments for all assigned shifts</li>
+        </ul>
+        </div>
+</body>
+</html>
